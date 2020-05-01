@@ -23,3 +23,18 @@ For SMB packets where a file was listed, filter with:
 smb.file contains EVIL
 ```
 Clicking this filtered packet can show you file information.
+
+### How to filter by http request type?
+```
+http.request.method == POST
+```
+
+### How to filter with tshark?
+```
+tshark -r capture5.pcap -Y "http.request.method == POST" -T fields -e urlencoded-form.value
+```
+
+### What is a wireshark filter you can use to view HTTP response content?
+```
+http.file_data
+```
