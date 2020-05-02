@@ -38,3 +38,24 @@ tshark -r capture5.pcap -Y "http.request.method == POST" -T fields -e urlencoded
 ```
 http.file_data
 ```
+
+### What is remote file inclusion?
+Remote file inclusion attacks usually occur when an application receives a path to a file as input for a web page and does not properly sanitize it.
+
+### Show examples of what a SQL Injection might look like
+```
+admin' -- -
+
+' or 1=1--
+```
+
+### Show an example of what server-side Javascript Injection might look like
+The following could be posted to an API where the `$ne` syntax would get evaluated by Mongo:
+```
+{"username":"admin","password":{"$ne":"intentionallynotpassword"}}
+```
+
+### How do you find the WEP password of out of a pcap file?
+```
+aircrack-ng capture10.pcap
+```
