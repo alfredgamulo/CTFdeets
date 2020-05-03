@@ -59,3 +59,10 @@ The following could be posted to an API where the `$ne` syntax would get evaluat
 ```
 aircrack-ng capture10.pcap
 ```
+
+### How do you find the pre-shared key of a WPA network from a pcap file?
+```
+aircrack-ng -a 2 -w ~/rockyou.txt capture11.pcap
+# -a is to specify attack mode, 1 for WEP and 2 for WPA
+# -w specify the wordlist
+```
