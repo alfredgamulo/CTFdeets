@@ -103,3 +103,76 @@ tshark -r capture13.pcap -Y 'dns.flags == 0x8400' -T fields -e dns.txt | xxd -r 
 tshark -r capture14.pcap -Y 'http.request.uri contains bkdoorupld' -T fields -e http.request.uri.query.parameter | awk -F '[,=]' '{print $2}' | xxd -r -p > /tmp/obfuscated.file
 file /tmp/obfuscated.file # to find out how to open the file
 ```
+
+### How to script with pexpect and python subprocess?
+```
+#!/usr/bin/env python3
+
+import base64
+import codecs
+import pexpect
+import subprocess
+
+c = pexpect.spawnu('sudo MUTHUR')
+c.expect('INTERFACE 2037 READY FOR INQUIRY')
+print(c.after)
+c.sendline('eng')
+c.expect('\[i\] Would you like to initiate hydraulic pumps for alignment repair\?')
+print(c.after)
+c.sendline('yes')
+
+#1 LWOSIDHFB - 43561
+#2 hex - 34919
+#3 b64 - 51492
+#4 rot13 - 23151
+# 1 4 3 2
+
+# c.expect('\[i\] Pump 1 Started on port 43561...')
+# print(c.after)
+# c.expect('\[i\] Pump 2 Started on port 34919...')
+# print(c.after)
+# c.expect('\[i\] Pump 3 Started on port 51492...')
+# print(c.after)
+c.expect('\[i\] Pump 4 Started on port 23151...')
+print(c.after)
+
+# print("Calling pump 1")
+code = 'LWOSIDHFB'
+command = "nc localhost 43561"
+process = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+output, error = process.communicate((code+"\n").encode())
+code = output.decode()
+print("1 got:", code)
+rot = codecs.encode(code, 'rot_13')
+print(rot)
+
+# print("Calling pump 4")
+command = "nc localhost 23151"
+process = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+output, error = process.communicate((rot+"\n").encode())
+code = output.decode()
+print("4 got:", code)
+b = base64.b64encode(bytes(code, 'utf-8')).decode('utf-8')
+print(b)
+
+# print("Calling pump 3")
+command = "nc localhost 51492"
+process = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+output, error = process.communicate((b+"\n").encode())
+code = output.decode()
+print("3 got:", code)
+h = codecs.encode(code.encode(), 'hex').decode()
+print(h)
+
+# print("Calling pump 2")
+command = "nc localhost 34919"
+process = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+output, error = process.communicate((h+"\n").encode())
+code = output.decode()
+print("2 got:", code)
+exit()
+```
+Alternatively, all the subprocess scripting was possible with a bash one-liner:
+```
+echo "OVERRIDECODEFOUNDINPDF" | nc localhost 43561 | rot13 | nc localhost 23151 | base64 | nc localhost 51492 | xxd -p | nc localhost 34919
+```
