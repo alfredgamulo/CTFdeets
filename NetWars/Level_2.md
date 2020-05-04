@@ -98,3 +98,8 @@ or
 tshark -r capture13.pcap -Y 'dns.flags == 0x8400' -T fields -e dns.txt | xxd -r -p > /tmp/newfile.ps1
 ```
 
+### How to recover file hidden and obfuscated as query parameters in tshark?
+```
+tshark -r capture14.pcap -Y 'http.request.uri contains bkdoorupld' -T fields -e http.request.uri.query.parameter | awk -F '[,=]' '{print $2}' | xxd -r -p > /tmp/obfuscated.file
+file /tmp/obfuscated.file # to find out how to open the file
+```
