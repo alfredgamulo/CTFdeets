@@ -66,3 +66,35 @@ aircrack-ng -a 2 -w ~/rockyou.txt capture11.pcap
 # -a is to specify attack mode, 1 for WEP and 2 for WPA
 # -w specify the wordlist
 ```
+
+### What is an ICMP tunnel?
+In some situations a firewall has been set up to filter ports and services, setting strong egress access controls. Getting a reverse TCP shell is not trivial to get. Sometimes, ICMP is not explicitly blocked. `icmpsh` is a tool that can create an ICMP tunnel connecting a slave (target) with a master (attacker) machine.
+
+### How to find ICMP tunnel information in Wireshark?
+```
+data && icmp.type == 0
+# Type 0 = Echo Reply.
+# Type 8 = Echo Request.
+# Type 9 = Router Advertisement.
+# Type 10 = Router Solicitation.
+# Type 13 = Timestamp Request.
+# Type 14 = Timestamp Reply.
+```
+
+### What is a generic tshark script to filter data from a pcap file?
+```
+tshark -r capture.pcap -Y '<your wireshark filter here>' -T fields -e <field name>
+```
+
+### How to find ICMP tunnel information with tshark?
+```
+tshark -r capture12.pcap -Y data -T fields -e data | xxd -r -p
+```
+
+### How to find the payload in a DNS tunnel with tshark?
+```
+tshark -r capture13.pcap -Y "dns.resp.type" -T fields -e dns.txt | xxd -r -p
+or
+tshark -r capture13.pcap -Y 'dns.flags == 0x8400' -T fields -e dns.txt | xxd -r -p > /tmp/newfile.ps1
+```
+
