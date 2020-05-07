@@ -55,3 +55,14 @@ Get-Process | Select Name,Parent
 ```
 (Get-Content) /old/path -Raw) -replace 'before','after' | Set-Content /new/path
 ```
+
+### How do you search for commands in powershell?
+```
+Get-Command | Select-String "archive"
+```
+
+### How do you read an xml file?
+```
+$logs = (Import-Clixml /tmp/Security/Security.xml); $logs.length
+```
+
