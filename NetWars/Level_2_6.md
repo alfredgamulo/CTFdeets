@@ -66,3 +66,7 @@ Get-Command | Select-String "archive"
 $logs = (Import-Clixml /tmp/Security/Security.xml); $logs.length
 ```
 
+### How do you find unique xml objects in powershell?
+```
+$xml_cli.Id | group
+```
