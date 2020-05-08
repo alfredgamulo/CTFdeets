@@ -93,3 +93,7 @@ $tcpConnection.Connected
 $writer.WriteLine("is this even working?")                                                                                                                       
 while(($reader.Peek() -ne -1) -or ($tcpStream.Available)){write-host ([char]$reader.Read()) -NoNewline}
 ```
+
+### What is `getfattr`?
+It is a way to see NTFS extended file attributes
+For example, `getfattr -R -n ntfs.streams .` will show a hidden file.
