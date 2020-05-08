@@ -97,3 +97,5 @@ while(($reader.Peek() -ne -1) -or ($tcpStream.Available)){write-host ([char]$rea
 ### What is `getfattr`?
 It is a way to see NTFS extended file attributes
 For example, `getfattr -R -n ntfs.streams .` will show a hidden file.
+More information on NTFS Streams:
+Ever since Windows 2000, the NTFS file system in Windows has supported Alternate Data Streams, which allow you to store data behind" a filename with the use of a stream name. It's not detectable while browsing the file system, or anywhere within Windows… you can only access it with the "secret key" which is really just the name of the stream.
