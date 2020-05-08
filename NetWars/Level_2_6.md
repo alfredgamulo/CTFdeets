@@ -70,3 +70,8 @@ $logs = (Import-Clixml /tmp/Security/Security.xml); $logs.length
 ```
 $xml_cli.Id | group
 ```
+
+### How do you make an http call in powershell?
+```
+(Invoke-WebRequest -Uri http://127.0.0.1:9999/35 -Method POST -Body $pdata).RawContent
+```
