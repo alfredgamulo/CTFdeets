@@ -75,3 +75,21 @@ $xml_cli.Id | group
 ```
 (Invoke-WebRequest -Uri http://127.0.0.1:9999/35 -Method POST -Body $pdata).RawContent
 ```
+
+### How do you connect to a TCP endpoint and read/write? 
+```
+$FTPServer = "localhost"                                                                                                                  
+$FTPPort = 55555                                                                                                                          
+$tcpConnection = New-Object System.Net.Sockets.TcpClient($FTPServer, $FTPPort)                                                            
+$tcpStream = $tcpConnection.GetStream()                                                                                                   
+$reader = New-Object System.IO.StreamReader($tcpStream)                                                                                   
+$writer = New-Object System.IO.StreamWriter($tcpStream)                                                                                   
+$writer.AutoFlush = $true                                                                                                                 
+$buffer = new-object System.Byte[] 1024                                                                                                   
+$encoding = new-object System.Text.AsciiEncoding                                                                                          
+                                                          
+$tcpConnection.Connected                                                      
+
+$writer.WriteLine("is this even working?")                                                                                                                       
+while(($reader.Peek() -ne -1) -or ($tcpStream.Available)){write-host ([char]$reader.Read()) -NoNewline}
+```
