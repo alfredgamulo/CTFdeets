@@ -99,3 +99,12 @@ It is a way to see NTFS extended file attributes
 For example, `getfattr -R -n ntfs.streams .` will show a hidden file.
 More information on NTFS Streams:
 Ever since Windows 2000, the NTFS file system in Windows has supported Alternate Data Streams, which allow you to store data behind" a filename with the use of a stream name. It's not detectable while browsing the file system, or anywhere within Windows… you can only access it with the "secret key" which is really just the name of the stream.
+
+### If you find a hidden NTFS stream how do you get the contents?
+```
+> getfattr -R -n ntfs.streams.list ./xenomorph.txt | Select-Object
+# file: xenomorph.txt
+ntfs.streams.list="muthur_comms_log.db"
+> gc ./xenomorph.txt:muthur_comms_log.db
+\Program Files (x86)\Mozilla Firefox\gmp-clearkey\0.1\32th234.zip
+```
