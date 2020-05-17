@@ -10,3 +10,6 @@ tshark -r snort.log.pcap -z follow,tcp,ascii,5
 ```
 alert tcp $HOME_NET any -> $EXTERNAL_NET any (msg:'YO WTF'; content:'Xenomorph'; sid:1000001; rev:1;classtype:trojan-activity)
 ```
+`pcre` can be used instead of `content` to perform a regular expression filter
+
+
