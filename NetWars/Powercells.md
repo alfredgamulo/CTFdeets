@@ -14,4 +14,25 @@ PowerCell[FiEfHfaKX8napmsq] Xeno-Malware
 PowerCell[0GtN4IFsDd2u98I9] Volatile Memory
 
 PowerCell[wQf3oOX34jrjsir9] P0werSh3ll
+
+PowerCell[irYNLdGhTB4o9Tsp] Shopping Cart
+
+PowerCell[UxC3sqyqJ4LhhCdP] Admin Login #1
+
+PowerCell[P5f3L8AbsHYS8cQN] Admin Login #2
+
+PowerCell[k9TP4HlloMMri91c] Shop to Shell #1
+
+PowerCell[8CjgId37NsQhD2jA] Shop to Shell #2
+
+PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
+
+PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
+
+PowerCell[3nZkRzYOmyQ2zfD3] bioweapons6 #2
+
+PowerCell[1AiwIB9rNPNY1C7m] bioweapons6 #3
+
+PowerCell[6SZPggKNz3x2RzgG] bioweapons6 #4
+
 ```
