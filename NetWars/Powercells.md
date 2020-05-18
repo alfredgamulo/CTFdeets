@@ -39,6 +39,10 @@ PowerCell[dRWP1SlE4WwAbm1B] exif
 
 PowerCell[mr2qHe1lPMgd5ywj] scalpel challenge
 
+PowerCell[ntk1O66UKbRyWiZN] Regex Challenge #1
+
+PowerCell[6DRqSrrh0mfFr5BA] Regex Challenge #2
+
 PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
 
 PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
