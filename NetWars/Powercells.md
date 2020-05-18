@@ -37,6 +37,8 @@ PowerCell[fpA4q4Q4FCtlupM7] tcpdump / bpf #2
 
 PowerCell[dRWP1SlE4WwAbm1B] exif
 
+PowerCell[mr2qHe1lPMgd5ywj] scalpel challenge
+
 PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
 
 PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
