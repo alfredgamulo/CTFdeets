@@ -12,4 +12,5 @@ alert tcp $HOME_NET any -> $EXTERNAL_NET any (msg:'YO WTF'; content:'Xenomorph';
 ```
 `pcre` can be used instead of `content` to perform a regular expression filter
 
-
+### What is scalpel?
+It's a way to use extract files from an image binary if you know the headers and footers of the file you're looking for. It works best if you use the real hex values that you're trying to find.
