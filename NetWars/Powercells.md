@@ -31,6 +31,10 @@ PowerCell[CclXzT6Jw8WAuWfe] gpg challenge #1
 
 PowerCell[I58em5tdost1tfF7] gpg challenge #2
 
+PowerCell[X2QsaolEMrPDSUKH] tcpdump / bpf #1
+
+PowerCell[fpA4q4Q4FCtlupM7] tcpdump / bpf #2
+
 PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
 
 PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
