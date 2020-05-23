@@ -39,6 +39,8 @@ PowerCell[dRWP1SlE4WwAbm1B] exif
 
 PowerCell[fXcQNXcYtAciiLmE] dig dns #1
 
+PowerCell[zGLHUtppxazMnu32] dig dns #2
+
 PowerCell[mr2qHe1lPMgd5ywj] scalpel challenge
 
 PowerCell[ntk1O66UKbRyWiZN] Regex Challenge #1
