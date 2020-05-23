@@ -14,3 +14,8 @@ alert tcp $HOME_NET any -> $EXTERNAL_NET any (msg:'YO WTF'; content:'Xenomorph';
 
 ### What is scalpel?
 It's a way to use extract files from an image binary if you know the headers and footers of the file you're looking for. It works best if you use the real hex values that you're trying to find.
+
+### How do you use dig to perform a domain transfer?
+```
+dig @127.0.0.1 norehca.planet axfr -b 127.34.243.1
+```
