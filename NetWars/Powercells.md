@@ -53,6 +53,12 @@ PowerCell[C1CphcyOoXmzBH92] iptables docker challenge #2
 
 PowerCell[xgLbrHPSQN7C56gm] iptables docker challenge #3
 
+PowerCell[Tj9eQDeNn6cPoe7n] curl challenge #1
+
+PowerCell[2H6C0ZE8M8U3r6ZT] curl challenge #2
+
+PowerCell[bFirRNllachGFaO2] curl challenge #3
+
 PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
 
 PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
