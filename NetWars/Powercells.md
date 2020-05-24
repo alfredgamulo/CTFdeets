@@ -47,6 +47,12 @@ PowerCell[ntk1O66UKbRyWiZN] Regex Challenge #1
 
 PowerCell[6DRqSrrh0mfFr5BA] Regex Challenge #2
 
+PowerCell[5962fef0OOaQLimY] iptables docker challenge #1
+
+PowerCell[C1CphcyOoXmzBH92] iptables docker challenge #2
+
+PowerCell[xgLbrHPSQN7C56gm] iptables docker challenge #3
+
 PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
 
 PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
