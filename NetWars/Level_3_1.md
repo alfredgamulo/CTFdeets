@@ -179,3 +179,8 @@ weyuser@8914c8642587:~$ sudo ./xeno_scanner.elf $(printf "\x31\xc0\x50\x68\x2f\x
 ```
 jq '.[]| select(.name.first | contains("Ellen","Ash","Dallas","Lambert","Brett","Kane","Parker")) ' crew.json
 ```
+
+### Give an example jq query to combine fields and print them in CSV format:
+```
+jq -cr '.[]| select(.name.first | contains("Ellen","Ash","Dallas","Lambert","Brett","Kane","Parker")) | [.latitude,.longitude] | @csv' crew.json
+```
