@@ -94,3 +94,20 @@ curl ftp://ftpuser:ftppass@localhost -Q "DELE xenomorph1"
 ```
 tshark -r <capture_file>  -Y <wireshark_filter>  -o ssl.keylog_file:client_random.log
 ```
+
+### How can you use scapy to realign the ports for server and client so that tshark can analyze the file?
+```
+#!/usr/bin/python
+from scapy.all import *
+
+packets = rdpcap('covert_channel.pcap')
+for packet in packets:
+  if packet[IP].src == '10.124.245.32':
+    packet[TCP].sport = 443
+    packet[TCP].dport = 59292
+  else:
+    packet[TCP].sport = 59292
+    packet[TCP].dport = 443
+
+wrpcap('fixed_ports.pcap', packets)
+```
