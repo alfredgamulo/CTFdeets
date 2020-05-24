@@ -67,6 +67,8 @@ PowerCell[GigRKMOctnbYg9p1] Buffer Overflow Challenge #2
 
 PowerCell[aZNr3saJowqq25bl] Buffer Overflow Challenge #1
 
+PowerCell[5RlaDkn73xjPizLw] wey_tech_jq1 #1
+
 PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
 
 PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
