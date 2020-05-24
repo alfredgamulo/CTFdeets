@@ -31,3 +31,50 @@ $ nsupdate
 > update add hive.norehca.planet. 600 A 127.0.0.1
 > send
 ```
+
+### Dump of various iptables commands:
+```
+1. Set the default policies to DROP for 
+   the INPUT,FORWARD and OUTPUT chains.
+
+sudo iptables -P INPUT DROP
+sudo iptables -P FORWARD DROP
+sudo iptables -P OUTPUT DROP
+
+2. Create a rule to LOG all new SSH 
+   connection attempts.
+   
+sudo iptables -I OUTPUT -p tcp -m tcp --dport 22 -m state --state NEW,ESTABLISHED -j LOG --log-prefix "Outgoing SSH connection"
+sudo iptables -I INPUT -p tcp -m tcp --dport 22 -m state --state NEW,ESTABLISHED -j LOG --log-prefix "Outgoing SSH connection"
+
+3. Create a rule to ACCEPT all connections 
+   that are ESTABLISHED,RELATED on the INPUT
+   and the OUTPUT chains.
+
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+4. Create a rule to allow only remote source 
+   ip address 172.18.0.222 to access the local
+   SSH server on (port 22).
+
+sudo iptables -A INPUT -p tcp -s 172.18.0.222 --dport 22 -j ACCEPT
+
+5. Create a rule to allow any remote ip to 
+   access local tcp servers on ports 25 and 80.
+
+sudo iptables -A INPUT -p tcp --dport 25 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEP
+
+6. Create a rule applied to the INPUT chain
+   to ACCEPT all traffic from the lo interface.
+
+sudo iptables -A INPUT -i lo -j ACCEPT
+
+7. Create a rule to allow UDP port 53 and TCP 
+   port 80 connections going out (OUTPUT).
+
+sudo iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT
+```
+
