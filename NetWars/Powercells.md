@@ -59,6 +59,10 @@ PowerCell[2H6C0ZE8M8U3r6ZT] curl challenge #2
 
 PowerCell[bFirRNllachGFaO2] curl challenge #3
 
+PowerCell[AM4MMOAkup0HtDYC] scapy challenge #1
+
+PowerCell[AmEs32daMQUbDdeW] scapy challenge #2
+
 PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
 
 PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
