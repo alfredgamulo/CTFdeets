@@ -89,3 +89,8 @@ curl localhost/upload --cookie cookie.txt
 curl -u ftpuser:ftppass ftp://127.0.0.1/filename1 -O filename1
 curl ftp://ftpuser:ftppass@localhost -Q "DELE xenomorph1"
 ```
+
+### How do you analyze a pcap file with an SSL keylog file?
+```
+tshark -r <capture_file>  -Y <wireshark_filter>  -o ssl.keylog_file:client_random.log
+```
