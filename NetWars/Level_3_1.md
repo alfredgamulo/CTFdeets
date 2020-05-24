@@ -78,3 +78,14 @@ sudo iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
 sudo iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT
 ```
 
+### How do you save and use cookies with cURL?
+```
+curl localhost/cache --cookie-jar cookie.txt
+curl localhost/upload --cookie cookie.txt
+```
+
+### How do you get and delete files from an FTP server with cURL?
+```
+curl -u ftpuser:ftppass ftp://127.0.0.1/filename1 -O filename1
+curl ftp://ftpuser:ftppass@localhost -Q "DELE xenomorph1"
+```
