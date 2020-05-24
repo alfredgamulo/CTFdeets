@@ -63,6 +63,10 @@ PowerCell[AM4MMOAkup0HtDYC] scapy challenge #1
 
 PowerCell[AmEs32daMQUbDdeW] scapy challenge #2
 
+PowerCell[GigRKMOctnbYg9p1] Buffer Overflow Challenge #2
+
+PowerCell[aZNr3saJowqq25bl] Buffer Overflow Challenge #1
+
 PowerCell[yFcWJeWnmQ8s5rRf] bioweapons6 #1
 
 PowerCell[pmGpk64dJ8CHT43k] bioweapons6 #5
