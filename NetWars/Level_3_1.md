@@ -184,3 +184,15 @@ jq '.[]| select(.name.first | contains("Ellen","Ash","Dallas","Lambert","Brett",
 ```
 jq -cr '.[]| select(.name.first | contains("Ellen","Ash","Dallas","Lambert","Brett","Kane","Parker")) | [.latitude,.longitude] | @csv' crew.json
 ```
+
+### Give an example of a scripted FTP command:
+```
+#!/bin/bash
+HOST='127.0.0.1'
+USER='root'
+PASSWD=$(python -c "print('pass'+10000*'A')")
+ftp -n -v $HOST << EOT
+user $USER $PASSWD
+ls
+EOT
+```
