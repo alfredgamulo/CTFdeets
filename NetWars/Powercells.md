@@ -85,4 +85,7 @@ PowerCell[1AiwIB9rNPNY1C7m] bioweapons6 #3
 
 PowerCell[6SZPggKNz3x2RzgG] bioweapons6 #4
 
+PowerCell[Ohto8oE1hEoB5S88] Mining For Eth #1
+
+PowerCell[IfJhaLiQRoqTqlgS] Mining For Eth #2
 ```
