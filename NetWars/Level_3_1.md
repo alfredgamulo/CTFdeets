@@ -196,3 +196,8 @@ user $USER $PASSWD
 ls
 EOT
 ```
+
+### What command helps to find non-standard open ports?
+```
+nmap -sV --open -p10-4000 mine.wey-tech.com
+```
