@@ -206,4 +206,5 @@ nmap -sV --open -p10-4000 mine.wey-tech.com
 ```
 nmap <host> -sV -sC 
 smbclient -L 10.3.3.45
+smbclient //10.3.3.45/weytechshare -c ls
 ```
