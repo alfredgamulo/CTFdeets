@@ -201,3 +201,9 @@ EOT
 ```
 nmap -sV --open -p10-4000 mine.wey-tech.com
 ```
+
+### After finding an smbd from nmap, what executable can help uncover more info?
+```
+nmap <host> -sV -sC 
+smbclient -L 10.3.3.45
+```
