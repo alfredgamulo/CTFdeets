@@ -92,4 +92,8 @@ PowerCell[IfJhaLiQRoqTqlgS] Mining For Eth #2
 PowerCell[pDMrDAm8DhA7LJuL] Mail Server Recon #1
 
 PowerCell[15k7AOTHkzf7a2FU] Mail Server Recon #2
+
+PowerCell[9WzJBC4B15iJZnt1] Abmas #1
+
+PowerCell[HqyCNPfwgPNbdpyb] Abmas #2
 ```
