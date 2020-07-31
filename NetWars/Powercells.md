@@ -102,4 +102,9 @@ PowerCell[tan4K4KXpalPef5J] Mods
 PowerCell[qgrAiJdWXIuPcJEs] Shellz
 
 PowerCell[eHmSzCsKm9BWERG8] Landing Pad
+
+PowerCell[B5MZDazskCzmPNMH] Admin Password
+
+PowerCell[XH0jrlTGzuuJNQcP] WP Shell
+
 ```
