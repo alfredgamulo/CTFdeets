@@ -31,3 +31,15 @@ sqlmap -u "http://personnel.wey-tech.com/application-check.php?applicantmail=bla
 nikto -h http://mail.wey-tech.com
 ```
 Nikto is an Open Source (GPL) web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs, checks for outdated versions of over 1250 servers, and version specific problems on over 270 servers. It also checks for server configuration items such as the presence of multiple index files, HTTP server options, and will attempt to identify installed web servers and software. 
+
+### What is a tool for social engineering?
+```
+sudo setoolkit
+```
+Use the following options for SET: 1) Social-Engineering Attacks , 2) Website Attack Vectors, 3) Credential Harvester Attack Method, 2) Site Cloner
+
+Clone the login page http://join.wey-tech.com/wp-login.php
+
+This will set up and clone the login page for join.wey-tech.com.
+
+Note - Be sure you visit your local tun0 interface at http://10.2.4.2/ to ensure it's cloning the login page and not index. If so, close setoolkit and try again until it clones the login page.
