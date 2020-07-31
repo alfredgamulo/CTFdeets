@@ -43,3 +43,5 @@ Clone the login page http://join.wey-tech.com/wp-login.php
 This will set up and clone the login page for join.wey-tech.com.
 
 Note - Be sure you visit your local tun0 interface at http://10.2.4.2/ to ensure it's cloning the login page and not index. If so, close setoolkit and try again until it clones the login page.
+
+Hits are saved in XML `.set/reports/2020-07-31 03:57:17.429704.xml`
