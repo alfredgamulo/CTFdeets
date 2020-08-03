@@ -66,3 +66,7 @@ ice:: 00000000000000000000000000000000000000000000000000000000000000000000000000
 [+] Simulating HID tag with ID 200400667c          
 [+] Press pm3-button to abort simulation          
 [=] You can cancel this operation by pressing the pm3 button  
+
+</pre>
+
+For Indala: http://www.proxmark.org/forum/viewtopic.php?id=624
