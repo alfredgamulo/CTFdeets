@@ -109,6 +109,8 @@ PowerCell[XH0jrlTGzuuJNQcP] WP Shell
 
 PowerCell[SCqFnXy5RTLU2gaD] Norehca Scrapbook (hash extension) #1
 
+PowerCell[pW7EKmeLSHR8TIRD] Norehca Scrapbook (hash extension) #2
+
 PowerCell[rGwFQckCIdHycTjk] Norehca Scrapbook (hash extension) #3
 
 PowerCell[Cs0QrJxff74iiK63] Norehca Scrapbook (hash extension) #4
