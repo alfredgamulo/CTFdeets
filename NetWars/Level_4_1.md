@@ -7,4 +7,4 @@ ssh weytechuser@files.wey-tech.com -D 9050 -f -N
 ```
 Use proxychains to force any command we run locally to route all traffic through our SOCKS tunnel so that we can hit targets
 
-Configure Firefox to run through the proxy.
+Configure Firefox to run through the proxy. A good addon is SmartProxy and you can configure the SOCKS4 Protocol proxy using the localhost port set above.
