@@ -118,4 +118,6 @@ PowerCell[Cs0QrJxff74iiK63] Norehca Scrapbook (hash extension) #4
 PowerCell[7e6oSulyJjcTEH5A] Norehca Scrapbook (hash extension) #5
 
 PowerCell[ehCkzmFJBfpABIGf] Norehca Scrapbook (hash extension) #6
+
+PowerCell[fbgksGhOh3TlNRAb] Employee DB #1
 ```
