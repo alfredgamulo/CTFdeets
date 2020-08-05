@@ -1,5 +1,31 @@
 # Various Terminal commands
 
+### If you don't know where to begin or what tool to use, what is a good place to start?
+ptf @ https://github.com/alfredgamulo/ptf
+```
+sudo ptf
+ptf> search hash
+[*] Search results below:
+modules/intelligence-gathering/hash_extender
+modules/password-recovery/hashcat-legacy
+modules/password-recovery/princeprocessor
+modules/password-recovery/statsprocessor
+modules/password-recovery/hashcat-utils
+modules/password-recovery/check_hashes
+modules/password-recovery/hashcat
+modules/password-recovery/password_analysis_and_cracking_kit
+modules/password-recovery/maskprocessor
+ptf> use modules/intelligence-gathering/hash_extender
+
+ptf:(modules/intelligence-gathering/hash_extender)>help
+Available from main prompt: show modules, show <module>, search <name>, use <module>
+Inside modules: show options, set <option>,run
+Additional commands: back, help, ?, exit, quit
+Update or Install: update, upgrade, install, run
+
+ptf:(modules/intelligence-gathering/hash_extender)>install
+```
+
 ### How do you find and follow a tcp stream with tshark?
 ```
 tshark -r snort.log.pcap -Y "http.user_agent contains Xenomorph" -T fields -e tcp.stream
