@@ -137,5 +137,8 @@ PowerCell[kGZQCKoxx11Psbim] Clowdy #4
 
 PowerCell[fZdDAt19WKobYeX8] Clowdy #5
 
+PowerCell[O6z7geqQ4WoLznTS] isolated windows workstations #1
+
+PowerCell[XAbPRlwucteh5DDB] isolated windows workstations #2
 
 ```
