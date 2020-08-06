@@ -129,4 +129,8 @@ PowerCell[uJ5RuFBm8KcRPKDs] Employee DB #4
 
 PowerCell[ezT2WCzPXKCWDP1s] Clowdy #1
 
+PowerCell[FHkLY7sXUjLxpyRO] Clowdy #2
+
+PowerCell[w8bUaHRlcpEhJ0SC] Clowdy #3
+
 ```
