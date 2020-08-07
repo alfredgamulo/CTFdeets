@@ -1,6 +1,8 @@
 For GPS:
 - https://github.com/Genymobile/gnirehtet
 - https://wiki.networksecuritytoolkit.org/nstwiki/index.php?title=HowTo_Use_an_Android_Phone_as_a_GPSd_Source
+For converting:
+- https://www.designer2k2.at/en/mods/elektronik/156-raspberry-pi-wardriving-setup
 
 Have GPSd on phone and laptop
 Have gnirehtet and the APK on laptop
@@ -34,5 +36,5 @@ gpsmon
 ^C
 kismet
 # after collecting
-kismetdb_to_wiglecsv --in Kismet-<blah>.kismet --out derp.csv
+python3 kismettowigle.py Kismet-<blah>.kismet
 ```
