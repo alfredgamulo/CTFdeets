@@ -12,8 +12,8 @@ import time
 
 # CHANGE ME
 TARGET_SSID = 'WCTF_18'
-TARGET_MAC = '00:70:6B:6D:CA:40'
-TARGET_FREQ = '5805'
+TARGET_MAC = '00:70:6B:6D:CA:40' # get this from airodump
+TARGET_FREQ = '5805' # get this from `iwlist wlan28mon channel`
 
 password_queue = Queue()
 start_size = 0
