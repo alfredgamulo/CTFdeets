@@ -4,6 +4,7 @@ To find the target:
 airmon-ng # to list interfaces (nic)
 airmon-ng start [nic]
 airodump-ng [nicmon] --band ag
+# use -c 161 to specify channel
 airmon-ng stop [nicmon]
 ```
 

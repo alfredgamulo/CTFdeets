@@ -2,8 +2,7 @@ sudo airmon-ng
 
 sudo airmon-ng start wlan27
 
-sudo airodump-ng  -w derp0 --output-format pcap -i wlan27mon
-# -i is for saving only IVs (for cracking)
+sudo airodump-ng  -w derp --output-format pcap --band ag wlan27mon
 
 
 # wget https://raw.githubusercontent.com/rfhs/wctf-files/master/wordlist/cyberpunk.words
