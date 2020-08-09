@@ -45,3 +45,11 @@ broke?
 iw dev
 
  #iw wlan32mon set type managed
+
+
+
+how to connect to an open AP?
+
+iw dev <interface> connect <AP> <frequency>
+
+make sure that interface is up "ifconfig <interface> up"
