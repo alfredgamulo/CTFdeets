@@ -18,7 +18,7 @@ notes from old cons:
 | WCTF_10-solved        | WEP, 64-bit  Run aircrack with -n 64 command                                                   | 7A:E3:27:AD:ED:6D   | 11               |
 | WCTF-11-SOLVED        | WPS, 5GHz pixie dust                                                                           |                     |                  |
 | WCTF_12-wpa2          | Open, 802.11ac only - login with phone                                                         |                     |                  |
-| WCTF_PMKID_11r_TEST|  |                                                                                                | C8:B5:AD:FF:21:03   | 6                |
+| WCTF_PMKID_11r_TEST   |                                                                                                | C8:B5:AD:FF:21:03   | 6                |
 | WCTF_PMKID_TEST       |                                                                                                | C8:B5:AD:FF:21:02   | 6                |
 | OPEN_CTF              |                                                                                                | C8:B5:AD:FF:21:00   | 6                |
 | WCTF_WPA              |                                                                                                | 34:FC:B9:74:CF:C2   |                  |
