@@ -1,5 +1,5 @@
 hostapd:
-
+```
 interface=wlan31mon
 ssid=WCTF_04
 hw_mode=g
@@ -12,9 +12,9 @@ wpa_passphrase=my_password
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
+```
 
-
-hostapd [conf file] -d  for more info
+`hostapd [conf file] -d`  for more info
 
 
 this is helpful for WCTF_04 where you have airodump running.
