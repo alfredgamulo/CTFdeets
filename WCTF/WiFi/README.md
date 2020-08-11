@@ -18,7 +18,7 @@ notes from old cons:
 | WCTF-11               | WPS, 5GHz                                                                          |                     |         | pixie dust
 | WCTF-11               | Hidden SSID on channel 149                                                         |                     |         |
 | WCTF_12               | Open, 802.11ac only                                                                |                     |         | login with phone
-| WCTF_PMKID_11r_TEST|  |                                                                                    | C8:B5:AD:FF:21:03   | 6       |
+| WCTF_PMKID_11r_TEST   |                                                                                    | C8:B5:AD:FF:21:03   | 6       |
 | WCTF_PMKID_TEST       |                                                                                    | C8:B5:AD:FF:21:02   | 6       |
 | OPEN_CTF              |                                                                                    | C8:B5:AD:FF:21:00   | 6       |
 | WCTF_WPA              |                                                                                    | 34:FC:B9:74:CF:C2   |         |
