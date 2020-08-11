@@ -38,6 +38,6 @@ notes from old cons:
 
 how to connect to an open AP?
 
-`iw dev <interface> connect <AP> <frequency>``
+`iw dev <interface> connect <AP> <frequency>`
 
 make sure that interface is up "ifconfig <interface> up"
