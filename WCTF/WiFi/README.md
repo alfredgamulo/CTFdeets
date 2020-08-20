@@ -29,6 +29,24 @@ notes from old cons:
 | WCTF_WEP              |                                                                                    | 34:FC:B9:74:CF:C1   |         |
 
 
+## Bands
+802.11a (Sep 1999):
+* 5GHz: 54Mbps
+
+802.11b (Sep 1999):
+* 2.4GHz: 11Mbps
+
+802.11g (June 2003):
+* 2.4GHz: 54Mbps
+
+802.11n (Oct 2009):
+* 5 or 2.4 GHz: 450 to 600Mbps
+
+802.11ac (Jan 2014):
+* 5GHz: 1.3Gbps
+
+802.11ax (late 2019):
+* 4x throughput
 
 ## quick commands:
 
