@@ -36,3 +36,9 @@ Intercept web traffic using:
 * `Foxy Proxy`
 
 Don't forget Google dorking or social media sites.
+
+### Scanning & Enumeration
+
+Ports
+
+* `nmap`
