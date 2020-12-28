@@ -15,3 +15,5 @@ Identify targets.
     * https://www.dehashed.com/
     * https://bit.ly/deepwebz
 * `theharvester` is a tool in kali that can find emails, subdomains, IP addresses
+* `sublist3r` can enumerate website subdomains
+  * `apt install sublist3r`
