@@ -30,3 +30,7 @@ Find what a website is built with:
 * https://builtwith.com
 * `wappalyzer` browser plugin
 * `whatweb` yet another website technology enumerator
+
+Intercept web traffic using:
+* `Burp Suite`
+* `Foxy Proxy`
