@@ -23,3 +23,5 @@ Subdomains
   * `apt install sublist3r`
 * https://crt.sh uses certificates to enumerate subdomains
 * `amass` yet another subdomain lister
+
+After finding subdomains, `tomnomnom httpprobe` can take a list and show what sites are running.
