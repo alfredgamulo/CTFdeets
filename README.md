@@ -22,3 +22,4 @@ Subdomains
 * `sublist3r` can enumerate website subdomains
   * `apt install sublist3r`
 * https://crt.sh uses certificates to enumerate subdomains
+* `amass` yet another subdomain lister
