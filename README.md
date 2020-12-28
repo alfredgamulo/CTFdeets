@@ -14,3 +14,4 @@ Identify targets.
     * https://snusbase.com/
     * https://www.dehashed.com/
     * https://bit.ly/deepwebz
+* `theharvester` is a tool in kali that can find emails, subdomains, IP addresses
