@@ -39,6 +39,7 @@ Don't forget Google dorking or social media sites.
 
 ### Scanning & Enumeration
 
-Ports
+Machines and Ports
 
-* `nmap`
+* `netdiscover` to find machines
+* `nmap` to find open ports
