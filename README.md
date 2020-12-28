@@ -2,9 +2,10 @@
 
 ## General penetration steps
 
-### Information Gathering
+### Information Gathering - Identifying targets
 
-Identify targets.
+Email addresses
+
 * https://hunter.io to find email addresses and email patterns.
 * Gather breached credentials with `breach-parse`
   * Consider other breached data sources: 
@@ -14,6 +15,9 @@ Identify targets.
     * https://snusbase.com/
     * https://www.dehashed.com/
     * https://bit.ly/deepwebz
+
+Subdomains
+
 * `theharvester` is a tool in kali that can find emails, subdomains, IP addresses
 * `sublist3r` can enumerate website subdomains
   * `apt install sublist3r`
