@@ -34,3 +34,5 @@ Find what a website is built with:
 Intercept web traffic using:
 * `Burp Suite`
 * `Foxy Proxy`
+
+Don't forget Google dorking or social media sites.
