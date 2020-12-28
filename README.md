@@ -5,7 +5,7 @@
 ### Information Gathering
 
 Identify targets.
-* `hunter.io` to find email addresses and email patterns.
+* https://hunter.io to find email addresses and email patterns.
 * Gather breached credentials with `breach-parse`
   * Consider other breached data sources: 
     * https://gist.github.com/alfredgamulo/6259986662e840da3409d1ff8c3362e7
@@ -17,3 +17,4 @@ Identify targets.
 * `theharvester` is a tool in kali that can find emails, subdomains, IP addresses
 * `sublist3r` can enumerate website subdomains
   * `apt install sublist3r`
+* https://crt.sh uses certificates to enumerate subdomains
