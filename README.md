@@ -28,4 +28,4 @@ After finding subdomains, `tomnomnom httpprobe` can take a list and show what si
 
 Find what a website is built with:
 * https://builtwith.com
-* `wappalyzer`
+* `wappalyzer` browser plugin
