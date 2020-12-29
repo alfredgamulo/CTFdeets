@@ -86,3 +86,6 @@ Password Spraying & Credential Stuffing
 
 
 
+## Meterpreter etc
+`meterpreter > getuid`
+* NT AUTHORITY\SYSTEM - highest user on windows
