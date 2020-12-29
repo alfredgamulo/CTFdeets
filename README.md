@@ -44,3 +44,7 @@ Machines and Ports
 * `netdiscover` to find machines
 * `nmap -T4 -p- -A` to find open ports
 * `nmap -sU -T4 -p <host>`
+
+Load up IP addresses and look for default or error pages
+
+* `nikto`
