@@ -58,4 +58,4 @@ Tools if `smb` is discovered after `nmap` scan:
 
 Search for exploits on the services/ports and versions that were found:
 * https://www.exploit-db.com/
-* https://www.rapid7.com/db/modules/exploit/
+* https://www.rapid7.com/db/
