@@ -95,3 +95,6 @@ Password Spraying & Credential Stuffing
 
 `meterpreter > help`
 * find all the commands you can do while connected to a system with a meterpreter shell
+
+`meterpreter > hashdump`
+* try to crack the passwords, or try to "pass the hash"
