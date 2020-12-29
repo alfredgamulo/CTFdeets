@@ -88,6 +88,9 @@ Found a default web page and want to find viable paths?
 * `dirbuster`
 * `gobuster`
 
+Payloads other than msf:
+* `msfvenom`
+
 ## Meterpreter etc
 `meterpreter > getuid`
 * NT AUTHORITY\SYSTEM - highest user on windows
