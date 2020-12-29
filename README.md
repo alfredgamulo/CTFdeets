@@ -64,3 +64,5 @@ Other scanning tools:
 * `masscan -p1-65535 --rate 1000 <ip addr>` this tool scans the whole internet, make sure to specify ip so that you're not hitting disallowed servers
 * `msf5 > search portscan` use scanning options from metasploit
 * https://www.tenable.com/downloads/nessus
+
+### Exploitation Basics
