@@ -75,3 +75,11 @@ Try to obtain shell
   * useful if need to get around LHOST NAT or firewalls
   
 Know the difference between `staged` and `non-staged` payloads. There can be identical attack patterns but the staging of the payload causes one way to work and one way to fail. For example, if one metasploit exploit fails to complete, try to search for other payloads. `set payload linux/x86` (then tab autocomplete to enumerate options). Try a single non-staged payload or the opposite.
+
+Brute force tools:
+* `hydra -l root -P /usr/share/wordlists/metasploit/unix_passwords.txt ssh://<ip>:22 -t 4 -V` attempt root login on target IP
+* `msf5 > use auxiliary/scanner/ssh/ssh_login`
+
+
+
+
