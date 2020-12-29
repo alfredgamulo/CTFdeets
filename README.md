@@ -74,4 +74,4 @@ Try to obtain shell
 * Bind shells
   * useful if need to get around LHOST NAT or firewalls
   
-Know the difference between `staged` and `non-staged` payloads. There can be identical attack patterns but the staging of the payload causes one way to work and one way to fail. 
+Know the difference between `staged` and `non-staged` payloads. There can be identical attack patterns but the staging of the payload causes one way to work and one way to fail. For example, if one metasploit exploit fails to complete, try to search for other payloads. `set payload linux/x86` (then tab autocomplete to enumerate options). Try a single non-staged payload or the opposite.
