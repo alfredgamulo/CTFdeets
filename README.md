@@ -66,3 +66,5 @@ Other scanning tools:
 * https://www.tenable.com/downloads/nessus
 
 ### Exploitation Basics
+* Reverse shells
+* Bind shells
