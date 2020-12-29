@@ -67,4 +67,6 @@ Other scanning tools:
 
 ### Exploitation Basics
 * Reverse shells
+  * most common shell exploit
 * Bind shells
+  * useful if need to get around LHOST NAT or firewalls
