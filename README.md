@@ -53,3 +53,4 @@ Default pages, error pages, or information about the underlying architecture can
 
 Tools if `smb` is discovered after `nmap` scan:
 * `msfconsole`
+  * `search smb` - try for example: `use auxiliar/scanner/smb/smb_version`
