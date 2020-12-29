@@ -80,6 +80,8 @@ Brute force tools:
 * `hydra -l root -P /usr/share/wordlists/metasploit/unix_passwords.txt ssh://<ip>:22 -t 4 -V` attempt root login on target IP
 * `msf5 > use auxiliary/scanner/ssh/ssh_login`
 
+Password Spraying & Credential Stuffing
+* just try to use the creds found in information gathering to login to anything
 
 
 
