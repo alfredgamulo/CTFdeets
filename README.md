@@ -48,3 +48,5 @@ Machines and Ports
 Load up IP addresses and look for default or error pages
 
 * `nikto`
+
+Default pages, error pages, or information about the underlying architecture can be filed as **information disclosure**
