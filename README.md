@@ -101,7 +101,10 @@ Found a default web page and want to find viable paths?
 `meterpreter > hashdump`
 * try to crack the passwords, or try to "pass the hash"
 
-Not escaleted, but got a meterpreter shell
+Not escaleted, but got a meterpreter shell:
+
 `meterpreter > background`
+
 `msf5 > search suggester`
+
 use the suggester to find possible root escalation tactics
