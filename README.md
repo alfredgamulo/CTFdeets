@@ -55,3 +55,7 @@ Tools if `smb` is discovered after `nmap` scan:
 * `msfconsole`
   * `search smb` - try for example: `use auxiliar/scanner/smb/smb_version`
 * `smbclient` try to connect to it and try the individual sharenames in the server path
+
+Search for exploits on the services and versions that were found:
+* https://exploit-db.com
+* https://www.rapid7.com/db/modules/exploit/
