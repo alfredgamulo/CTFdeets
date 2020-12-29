@@ -82,6 +82,7 @@ Brute force tools:
 
 Password Spraying & Credential Stuffing
 * just try to use the creds found in information gathering to login to anything
+  * `pitchfork` feature in Burp Suite `Intruder` tab
 
 
 
