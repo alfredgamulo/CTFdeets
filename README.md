@@ -59,3 +59,7 @@ Tools if `smb` is discovered after `nmap` scan:
 Search for exploits on the services/ports and versions that were found:
 * https://www.exploit-db.com/
 * https://www.rapid7.com/db/
+
+Other scanning tools:
+* `masscan -p1-65535 --rate 1000 <ip addr>` this tool scans the whole internet, make sure to specify ip so that you're not hitting disallowed servers
+* `msf5 > search portscan` use scanning options from metasploit
