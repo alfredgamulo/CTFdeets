@@ -90,6 +90,7 @@ Found a default web page and want to find viable paths?
 
 Payloads other than msf:
 * `msfvenom`
+  * for example, can create a reverse shell tomcat war file
 
 ## Meterpreter etc
 `meterpreter > getuid`
