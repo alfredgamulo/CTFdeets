@@ -84,7 +84,9 @@ Password Spraying & Credential Stuffing
 * just try to use the creds found in information gathering to login to anything
   * `pitchfork` feature in Burp Suite `Intruder` tab
 
-
+Found a default web page and want to find viable paths?
+* `dirbuster`
+* `gobuster`
 
 ## Meterpreter etc
 `meterpreter > getuid`
