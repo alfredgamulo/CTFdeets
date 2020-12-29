@@ -70,4 +70,5 @@ Other scanning tools:
   * most common shell exploit
 * Bind shells
   * useful if need to get around LHOST NAT or firewalls
+  
 Know the difference between `staged` and `non-staged` payloads. There can be identical attack patterns but the staging of the payload causes one way to work and one way to fail. 
