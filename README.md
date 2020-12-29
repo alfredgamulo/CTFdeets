@@ -89,3 +89,9 @@ Password Spraying & Credential Stuffing
 ## Meterpreter etc
 `meterpreter > getuid`
 * NT AUTHORITY\SYSTEM - highest user on windows
+
+`meterpreter > sysinfo`
+* Get information on system, see if it matches earlier scans
+
+`meterpreter > help`
+* find all the commands you can do while connected to a system with a meterpreter shell
