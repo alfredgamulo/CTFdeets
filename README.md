@@ -42,4 +42,4 @@ Don't forget Google dorking or social media sites.
 Machines and Ports
 
 * `netdiscover` to find machines
-* `nmap` to find open ports
+* `nmap -T4 -p- -A` to find open ports
