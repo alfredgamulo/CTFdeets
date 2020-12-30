@@ -105,6 +105,13 @@ Find vulns on windows while logged in
 * `rasta mouse`/`sherlock`
 * GDSSecurity `Windows-Exploit-Suggester`
 
+## Post Exploitation
+Persistence scripts
+
+Scheduled Tasks
+
+Add a User
+
 ## Meterpreter etc
 `meterpreter > getuid`
 * NT AUTHORITY\SYSTEM - highest user on windows
