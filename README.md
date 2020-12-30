@@ -99,6 +99,9 @@ Escalate user:
 * `linEnum`
 * `LinuxPrivChecker`
 
+Find vulns on windows while logged in
+* `rasta mouse`/`sherlock`
+
 ## Meterpreter etc
 `meterpreter > getuid`
 * NT AUTHORITY\SYSTEM - highest user on windows
