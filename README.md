@@ -17,13 +17,12 @@ Email addresses
     * https://bit.ly/deepwebz
 
 Subdomains
-
+* `assetfinder`
 * `theharvester` is a tool in kali that can find emails, subdomains, IP addresses
 * `sublist3r` can enumerate website subdomains
   * `apt install sublist3r`
 * https://crt.sh uses certificates to enumerate subdomains
 * `amass` yet another subdomain lister
-* `assetfinder`
 
 After finding subdomains, `tomnomnom httpprobe` can take a list and show what sites are running.
 
