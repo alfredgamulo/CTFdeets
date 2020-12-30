@@ -101,6 +101,7 @@ Escalate user:
 
 Find vulns on windows while logged in
 * `rasta mouse`/`sherlock`
+* GDSSecurity `Windows-Exploit-Suggester`
 
 ## Meterpreter etc
 `meterpreter > getuid`
