@@ -6,7 +6,7 @@ notes from old cons:
 |-----------------------|------------------------------------------------------------------------------------|---------------------|---------|------------
 | WCTF_00               | Log in to AP                                                                       | 60:E3:27:AD:ED:6D   | 11      |
 | WCTF_01               | WEP, 128-bit, 30 ARP                                                               | 62:E3:27:AD:ED:6D   |         | fakeoff to keep connected, start and forget
-| WCTF_02               | WEP, 5 GHz, no client                                                              |                     |         | https://www.aircrack-ng.org/doku.php?id=how_to_crack_wep_with_no_clients
+| WCTF_02               | WEP, 5 GHz, no client                                                              |                     |         | https://www.aircrack-ng.org/doku.php?id=how_to_crack_wep_with_no_clients  https://quickfixpei.ca/projects/wifi/wep/wep2.html#step1
 | WCTF_03               | WEP client, no AP                                                                  |                     |         | Caffee latte. "run replay" or start a hostapd
 | WCTF_04               | WPA, client comes and goes.                                                        | 66:E3:27:AD:ED:6D   | 11      | Create an AP, watch for 4-way handshake where 3 parts is sufficient to crack
 | WCTF_05               | WPA, stable clients                                                                | 6A:E3:27:AD:ED:6D   | 11      | need to deauth, mdk3, directed deauth
