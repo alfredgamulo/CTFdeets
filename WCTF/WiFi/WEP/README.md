@@ -83,11 +83,17 @@ aireplay-ng -1 1000 -o 1 -q 10 -e WCTF_02 -a 00:DC:63:ED:5D:00 -h 02:00:00:00:1e
 ```
 
 😬 The way Ted did it for RFHS_RFCTF_02:
+
 aireplay -4 running on wlan28
+
 sup running on 27 with a bs key
+
 you can ignore the steps after -4 runs(edited)
+
 i just cracked it with that small amount of data
+
 i never got the inject to work
+
 
 supplicant:
 ```
