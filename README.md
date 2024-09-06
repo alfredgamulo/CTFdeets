@@ -41,6 +41,9 @@ Don't forget Google dorking or social media sites.
 
 Machines and Ports
 
+Consider using `masscan` to enumerate all the ports -- it's faster than `nmap`.
+Then, use `nmap -sV <target>` for banner-grabbing. 
+
 * `netdiscover` to find machines
 * `nmap -T4 -p- -A` to find open ports
 * `nmap -sU -T4 -p <host>`
