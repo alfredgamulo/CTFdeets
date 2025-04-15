@@ -1,0 +1,4 @@
+rpm-ostree install sox bluez-tools 
+
+play -n -c1 synth 10 sine 1000
+

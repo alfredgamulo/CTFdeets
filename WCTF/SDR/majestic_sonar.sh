@@ -1,30 +1,15 @@
 #!/bin/bash
 
-if [ x"$(command -v id 2> /dev/null)" != "x" ]
-then
-  USERID="$(id -u 2> /dev/null)"
-fi
-
-if [ "x${USERID}" = "x" ] && [ "x${UID}" != "x" ]
-then
-  USERID=${UID}
-fi
-
-if [ x${USERID} != "x" ] && [ x${USERID} != "x0" ]
-then
-  printf "Run it as root\n"
-  exit 1
-fi
+set -e
 
 usage() {
-  printf "\nUsage: ${0} --target <mac address> [--sleep 1]\n"
-  printf "\t-h,\t--help,     \tShow this help menu\n"
-  printf "\t-t,\t--target,   \tRequired: specify target mac address, ex: 00:11:22:33:44:55\n"
-  printf "\t-i,\t--interface,\tSpecify which bluetooth device to use, defaults to hci0\n"
-  printf "\t-s,\t--sleep,    \tSpecify how long to sleep between pings, defaults to 1\n"
-  printf "\t-a,\t--audio,    \tEnable audio\n"
-  printf "\t-v,\t--verbose,  \tShow l2ping output, mostly for debugging\n"
-  printf "\n"
+  echo -e "\nUsage: $0 --target <mac address> [--sleep 1]"
+  echo -e "\t-h, --help      Show this help menu"
+  echo -e "\t-t, --target    REQUIRED: MAC address of target device"
+  echo -e "\t-s, --sleep     Time between RSSI checks (default: 1)"
+  echo -e "\t-a, --audio     Enable audio feedback"
+  echo -e "\t-v, --verbose   Enable debug output"
+  echo
 }
 
 readonly PROGRESS='#####################################################################'
@@ -32,181 +17,132 @@ readonly red=$'\e[0;31m'
 readonly end=$'\e[0m'
 readonly ISNUMBER='^[0-9.]+$'
 readonly ISMAC='^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$'
-radio="hci0"
+
 target=""
-sleep="1"
-quiet="0"
-audio="0"
-freq="-1"
-dur="1"
+sleep=1
+audio=0
+quiet=0
+sim=0
 minrssi=128
 maxrssi=-128
-sim="0"
+
+cleanup() {
+  echo -e "\nStopping scan..."
+  # Kill tmux session if it exists
+  if tmux has-session -t bluetoothctl 2>/dev/null; then
+    tmux kill-session -t bluetoothctl
+  fi
+  bluetoothctl scan off >/dev/null
+}
+trap cleanup EXIT
+trap cleanup INT TERM
+
+# --- Get RSSI from bluetoothctl ---
+get_rssi_btctl() {
+  local target_mac="$1"
+  output=$(bluetoothctl info "$target_mac" 2>/dev/null)
+  echo "$output" | grep -i "RSSI" | awk -F'[()]' '{print $2}'
+}
 
 control_c() {
-  kill ${l2pid} 2> /dev/null
-  printf "\n"
-  if [ "${minrssi}" != "-128" ]; then
-    printf "MIN RSSI: ${minrssi}\n"
-  fi
-  if [ "${maxrssi}" != "128" ]; then
-    printf "MAX RSSI: ${maxrssi}\n"
-  fi
-  printf "Thanks for tracking with blue_sonar.\n"
+  echo
+  [[ "$minrssi" != "128" ]] && echo "MIN RSSI: $minrssi"
+  [[ "$maxrssi" != "-128" ]] && echo "MAX RSSI: $maxrssi"
+  echo "Thanks for tracking with majestic_sonar."
   exit 0
 }
 
-#parse args
-while true; do
-  case $1 in
-    -h|--help)
-      usage
-      exit 0
-      ;;
-    -i|--interface)
-      if [ -n "${2}" ]; then
-        if hciconfig "${2}" > /dev/zero 2>&1; then
-          radio="${2}"
-          shift
-        else
-          printf "Error: unable to find interface ${2}\n"
-        fi
-      else
-        printf "Error: ${1} requires a non-empty option argument\n"
-        usage
-        exit 1
-      fi
-      ;;
-    -a|--audio)
-      audio="1"
-      ;;
-    -v|--verbose)
-      quiet="1"
-      ;;
-    -s|--sleep)
-      if [ -n "${2}" ]; then
-        if [[ ${2} =~ ${ISNUMBER} ]]; then
-          sleep="${2}"
-          shift
-        else
-          printf "Error: sleep argument expects a number, not ${2}\n"
-          usage
-          exit 1
-        fi
-      fi
-      ;;
+# --- Parse Args ---
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help) usage; exit 0 ;;
     -t|--target)
-      if [ -n "${2}" ]; then
-        if [[ ${2} =~ ${ISMAC} ]]; then
-          target="${2}"
-          shift
-        else
-          printf "Error: target argument expects a valid mac address, not ${2}\n"
-          usage
-          exit 1
-        fi
-      else
-        printf "Error: ${1} requires a non-empty option argument\n"
-      fi
-      ;;
-    --sim)
-      sim="1"
-      rssi="-70"
-      ;;
-    --)
-      shift
-      break
-      ;;
-    *)
-      break
-      ;;
+      [[ "$2" =~ $ISMAC ]] || { echo "Invalid MAC: $2"; exit 1; }
+      target="$2"; shift ;;
+    -s|--sleep)
+      [[ "$2" =~ $ISNUMBER ]] || { echo "Sleep must be a number"; exit 1; }
+      sleep="$2"; shift ;;
+    -a|--audio) audio=1 ;;
+    -v|--verbose) quiet=1 ;;
+    --sim) sim=1; rssi=-70 ;;
+    *) echo "Unknown option: $1"; usage; exit 1 ;;
   esac
   shift
 done
-if [ -z "${target}" ] && [ "${sim}" != "1" ]; then
-  printf "target must be specified, please use -t or --target to specify one\n"
-  usage
-  exit 1
+
+[[ -z "$target" && "$sim" -ne 1 ]] && { echo "Error: --target is required"; usage; exit 1; }
+
+# --- Ensure Bluetooth is ready ---
+echo "Ensuring Bluetooth is powered on..."
+bluetoothctl power on >/dev/null
+
+# --- Start bluetoothctl scan in tmux ---
+start_bluetoothctl_scan() {
+  # Start bluetoothctl in a tmux session
+  tmux new-session -d -s bluetoothctl "bluetoothctl"
+  sleep 1
+  tmux send-keys -t bluetoothctl "scan on" Enter
+}
+
+# Start the Bluetooth scan
+start_bluetoothctl_scan
+
+# Allow time for the scan to run
+sleep 3
+
+# --- Optional: wait until device appears ---
+if [[ "$sim" -ne 1 ]]; then
+  echo "Waiting for device $target to appear in scan..."
+  found=""
+  for i in {1..10}; do
+    if bluetoothctl devices | grep -iq "$target"; then
+      found=1
+      break
+    fi
+    sleep 1
+  done
+
+  if [[ -z "$found" ]]; then
+    echo "⚠️  Warning: Device $target not seen during scan. Continuing anyway..."
+  fi
 fi
 
-
-trap control_c INT
-trap control_c TERM
-
-rc-service bluetooth status > /dev/null 2>&1 || rc-service bluetooth start > /dev/null 2>&1
-
+# --- Main Loop ---
 while true; do
-  if [ "${sim}" = "1" ]; then
-    true
-  elif [ -n "${l2pid}" ] && ps -p "${l2pid}" > /dev/null 2>&1; then
-    true
+  if [[ "$sim" -eq 1 ]]; then
+    rssi=$((rssi + 1))
+    [[ "$rssi" -ge 21 ]] && control_c
   else
-    if [ "${quiet}" = "1" ]; then
-      l2ping -i "${radio}" -t 1 -d "${sleep}" "${target}" 2> /dev/null &
-      l2pid=$!
-    else
-      l2ping -i "${radio}" -t 1 -d "${sleep}" "${target}" >/dev/null 2> /dev/null &
-      l2pid=$!
+    rssi=$(get_rssi_btctl "$target")
+    if [[ -z "$rssi" ]]; then
+      echo "Out of range or no signal from $target"
+      sleep "$sleep"
+      continue
     fi
+  fi
 
-    sleep 1
-  fi
-  if [ "${sim}" = "0" ] && ! rssi="$(hcitool -i "${radio}" rssi "${target}" 2> /dev/null | awk '{print $4}')"; then
-    printf "Out of range or not connected\n"
-    freq=100
-    dur=1
-    sleep ${sleep}
-    continue
-  elif [ -z "${rssi}" ]; then
-    printf "Out of range or not connected\n"
-    freq=100
-    dur=1
-    sleep ${sleep}
-    continue
+  # --- Display Bar ---
+  bars=$((rssi + 65))
+  if (( bars <= 0 )); then
+    echo -e "RSSI: ${rssi}  ${PROGRESS:0:1}${red}${PROGRESS:1}${end}"
+  elif (( bars > ${#PROGRESS} )); then
+    echo -e "RSSI: ${rssi}  ${PROGRESS}"
   else
-    if [ "${sim}" = "1" ]; then
-      rssi=$((rssi + 1))
-      if [ "${rssi}" = "21" ]; then
-        control_c
-      fi
-    fi
-    #max seen rssi was 20, expected numbers are negative
-    #color progress bar red for areas not seen
-    bars=$((rssi + 65))
-    if [ ${bars} -lt 0 ] || [ ${bars} = 0 ]; then
-      printf -- "RSSI: ${rssi}  ${PROGRESS:0:1}${red}${PROGRESS:1}${end}\n"
-    elif [ ${bars} -gt 69 ]; then
-      if [ "${rssi}" -lt 10 ] && [ ${rssi} -gt -1 ]; then
-        printf -- "RSSI:   ${rssi}  ${PROGRESS}\n"
-      else
-        printf -- "RSSI:  ${rssi}  ${PROGRESS}\n"
-      fi
-    else
-      if [ ${rssi} -ge 10 ]; then
-        printf -- "RSSI:  ${rssi}  ${PROGRESS:0:${bars}}${red}${PROGRESS:${bars}}${end}\n"
-      elif [ ${rssi} -lt 10 ] && [ ${rssi} -gt -1 ]; then
-        printf -- "RSSI:   ${rssi}  ${PROGRESS:0:${bars}}${red}${PROGRESS:${bars}}${end}\n"
-      elif [ ${rssi} -lt 1 ] && [ ${rssi} -gt -10 ]; then
-        printf -- "RSSI:  ${rssi}  ${PROGRESS:0:${bars}}${red}${PROGRESS:${bars}}${end}\n"
-      else
-        printf -- "RSSI: ${rssi}  ${PROGRESS:0:${bars}}${red}${PROGRESS:${bars}}${end}\n"
-      fi
-    fi
+    echo -e "RSSI: ${rssi}  ${PROGRESS:0:$bars}${red}${PROGRESS:$bars}${end}"
   fi
-  if [ ${rssi} -lt ${minrssi} ]; then
-    minrssi="${rssi}"
-  fi
-  if [ ${rssi} -gt ${maxrssi} ]; then
-    maxrssi="${rssi}"
-  fi
-  if [ "${audio}" = "1" ]; then
+
+  (( rssi < minrssi )) && minrssi=$rssi
+  (( rssi > maxrssi )) && maxrssi=$rssi
+
+  # --- Optional Audio ---
+  if [[ "$audio" -eq 1 ]]; then
     RSSIN=$((rssi*-1))
     freq=$(((65+rssi)/5*300))
     dur=.3
     spd=$((RSSIN+10))
     dur=.$spd
-    play -n -c1 synth $dur sine $freq 2> /dev/null
-    continue
+    PULSE_SERVER=unix:/run/user/1000/pulse/native play -n -c1 synth "$dur" sine "$freq" 2>/dev/null
   fi
-  sleep "${sleep}"
+
+  sleep "$sleep"
 done
