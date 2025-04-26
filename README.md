@@ -2,6 +2,15 @@
 
 ## General penetration steps
 
+### Preparing an environment
+
+Disrobox:
+
+```
+distrobox-create --name kali --image kalilinux/kali-rolling:latest --root
+distrobox-enter --root kali
+```
+
 ### Information Gathering - Identifying targets
 
 Email addresses
