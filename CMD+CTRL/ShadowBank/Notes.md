@@ -1,0 +1,13 @@
+username	password	salt
+shadow	a326311e36651f79b0dcd4dcda70228e	abc123
+dt	a441649fbaf4e42c513a4572f3db7e1e	abc123
+pants	4b8f105f370310ddc137d141d350cf12	as807135%#
+bither	0d107d09f5bbe40cade3de5c71e9e9b7	
+peappend	b0f5b5df7fa2bb54e046d4287a0757ca	
+tiger	827ccb0eea8a706c4c34a16891f84e7b	
+boots	5ebe2294ecd0e0f08eab7690d2a6ee69	
+arnold	asdgawegh	
+test	addd03df13dc513f55ac3baa35fec7a5	
+loans	hahanopassword	
+viggy	nopass	
+ZAP	903a98d709fa4683aaaa036b84c125a6	
