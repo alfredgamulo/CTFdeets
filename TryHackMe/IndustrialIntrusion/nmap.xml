@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Fri Jun 27 23:37:57 2025 as: nmap -T4 -p- -A -sV -oX nmap.xml 10.10.63.139 -->
+<nmaprun scanner="nmap" args="nmap -T4 -p- -A -sV -oX nmap.xml 10.10.63.139" start="1751081877" startstr="Fri Jun 27 23:37:57 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="10.10.63.139" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<taskprogress task="Service scan" time="1751081973" percent="100.00" remaining="0" etc="1751081973"/>
+<host starttime="1751081877" endtime="1751081976"><status state="up" reason="conn-refused" reason_ttl="0"/>
+<address addr="10.10.63.139" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65533">
+<extrareasons reason="conn-refused" count="65533" proto="tcp" ports="1-21,23-9004,9006-65535"/>
+</extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ssh" product="OpenSSH" version="9.6p1 Ubuntu 3ubuntu13.12" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:9.6p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  256 b1:a5:04:3e:5f:55:41:9f:a5:97:98:ca:8a:7f:30:9c (ECDSA)&#xa;  256 d8:f9:63:a5:7c:ee:fb:78:0d:77:03:31:39:da:7a:6d (ED25519)"><table>
+<elem key="type">ecdsa-sha2-nistp256</elem>
+<elem key="bits">256</elem>
+<elem key="fingerprint">b1a5043e5f55419fa59798ca8a7f309c</elem>
+<elem key="key">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBC4DnzUwYUOByahU0v6PmbM/wOJDZvGHcnejxB6j2/wiGn9C83zBFVJOxe2NIXUvEIcPSOcOsOFlvN/g/MtbAl4=</elem>
+</table>
+<table>
+<elem key="type">ssh-ed25519</elem>
+<elem key="bits">256</elem>
+<elem key="fingerprint">d8f963a57ceefb780d77033139da7a6d</elem>
+<elem key="key">AAAAC3NzaC1lZDI1NTE5AAAAIIe41z+0lLfCGtjSl6ckuhwxUCIvsGXvLZ+RrngwW9Ir</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="9005"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="golem" servicefp="SF-Port9005-TCP:V=7.92%I=7%D=6/27%Time=685F63B6%P=x86_64-redhat-linux-gnu%r(GenericLines,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(GetRequest,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(HTTPOptions,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(RTSPRequest,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(Help,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(SSLSessionReq,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(TerminalServerCookie,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(Kerberos,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(SMBProgNeg,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(FourOhFourRequest,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(LPDString,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(LDAPSearchReq,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(SIPOptions,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(WMSRequest,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;)%r(oracle-tns,2A,&quot;\[\?\]\x20Enter\x20unlock\x20code:\x20\[!\]\x20Access\x20Denied!\n&quot;);" method="table" conf="3"/><script id="fingerprint-strings" output="&#xa;  FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TerminalServerCookie, WMSRequest, oracle-tns: &#xa;    [?] Enter unlock code: [!] Access Denied!"><elem key="FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TerminalServerCookie, WMSRequest, oracle-tns">&#xa;    [?] Enter unlock code: [!] Access Denied!</elem>
+</script></port>
+</ports>
+<times srtt="76802" rttvar="461" to="100000"/>
+</host>
+<runstats><finished time="1751081976" timestr="Fri Jun 27 23:39:36 2025" summary="Nmap done at Fri Jun 27 23:39:36 2025; 1 IP address (1 host up) scanned in 99.76 seconds" elapsed="99.76" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
