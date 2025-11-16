@@ -1,0 +1,51 @@
+Windows Kernel
+
+Test004 - Persistence with shell extensions
+
+Kernel bug hunting and snapshot fuzzing
+Attacking file system minifilters
+
+Tools:
+IDE: vscode
+Debuggers: Windbg, gdb
+Disassemblers: IDA, Ghirdra, Binary Ninja
+Fuzzers
+
+Binary Ninja has a really good API
+It's a better tool
+
+Integer promotion/truncation
+
+C/C++ Bug classes:
+Int overflows
+Out of bounds
+Heap/Stack overflows
+Use after frees
+Arbitrary read/write
+Uninitalized Memory
+Pointer verification issues
+other - not language specific, ex: race conditions
+
+Bug hunting strategies:
+Find sinks: allocators, frees, memmove, file creation, register manipulation
+
+Why Audit drivers?
+Privelege escalation
+
+
+snapshot fuzzing 
+modify memory from a snapshot and attempt to resume
+whatthefuzz
+
+
+Windows mini filters
+filters exist between io manager and file system drivers
+
+file system mini filter ->
+filter message ports -> 
+filter callbacks -> 
+filter contexts
+
+what is cloud synchronization provider in windows?
+onedrive process 
+
